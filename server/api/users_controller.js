@@ -51,6 +51,7 @@ router.post('/users/', async function (req, res, next) {
 
 router.patch('/users/:id', async function (req, res, next) {
   try {
+    //console.log(req.body)
     var result = (await User.update(req.body,{id: req.body._id})).toJSON();
     res.status(200).json(result);
   } catch(e) {

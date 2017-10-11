@@ -88,7 +88,7 @@ export default {
         s4() + '-' + s4() + s4() + s4();
     },
     reset_pwdResetToken(id) {
-      axios.patch('/api/users/' + id,{_id: id, pwdResetToken: this.guid()}).then((res) => {
+      axios.patch('/api/users/' + id, {_id: id, pwdResetToken: this.guid(), pwdResetTokenExpires: (new Date('9999')).toISOString()}).then((res) => {
         this.$router.replace('/users/edit/' + id + '?' + Math.random())
       }).catch((e) => {
         console.log(e)

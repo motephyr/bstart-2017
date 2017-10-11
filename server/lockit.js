@@ -8,12 +8,15 @@ exports.appname = 'Gossim';
 exports.url = 'https://console.gossim.io';
 
 // email settings (same as nodemailer)
-exports.emailType = (process.env.NODE_ENV === 'production') ? 'nodemailer-smtp-transport' : 'nodemailer-stub-transport';
+// exports.emailType = (process.env.NODE_ENV === 'production') ? 'nodemailer-smtp-transport' : 'nodemailer-stub-transport';
+exports.emailType = 'nodemailer-smtp-transport';
 exports.emailSettings = {
-  service: 'Mailgun',
+  host: 'mx.vangro.com',
+  port: 25,
+  secure: false, // upgrade later with STARTTLS
   auth: {
-    user: secrets.mailgun.user,
-    pass: secrets.mailgun.pass
+    user: 'cbm@vangro.com',
+    pass: 'c29445999m'
   }
 };
 

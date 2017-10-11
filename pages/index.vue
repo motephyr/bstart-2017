@@ -1,16 +1,5 @@
 <template>
   <div class="container">
-    <!--<div id="app">-->
-    <!--<el-radio class="radio" v-model="radio" label="1">备选项</el-radio>-->
-    <!--<el-radio class="radio" v-model="radio" label="2">备选项</el-radio>-->
-    <!--</div>-->
-
-    <!--<div id="app">-->
-      <!--<el-button>默认按钮</el-button>-->
-      <!--<el-button type="primary">主要按钮</el-button>-->
-      <!--<el-button type="text">文字按钮</el-button>-->
-    <!--</div>-->
-
     <h1>Please login to see the secret content</h1>
     <form v-if="!$store.state.authUser" @submit.prevent="login">
       <p class="error" v-if="formError">{{ formError }}</p>
@@ -30,17 +19,6 @@
 </template>
 
 <script>
-
-//var Main = {
-//    data () {
-//        return {
-//            radio: '1'
-//        };
-//    }
-//};
-//var Ctor = Vue.extend(Main);
-//new Ctor().$mount('#app');
-
 export default {
   data () {
     return {

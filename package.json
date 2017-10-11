@@ -27,6 +27,7 @@
     "express-jsend": "^0.1.0",
     "express-session": "^1.15.5",
     "jade": "^1.11.0",
+    "jquery": "^3.2.1",
     "knex": "^0.13.0",
     "lockit": "http://github.com/motephyr/lockit.git",
     "lockit-utils": "http://github.com/makeandship/lockit-utilities.git#feature/extended_user",
@@ -38,11 +39,12 @@
     "postcss-nested": "^2.1.2",
     "postcss-responsive-type": "^1.0.0",
     "scss": "^0.2.4",
-    "source-map-support": "^0.4.15"
+    "source-map-support": "^0.4.15",
+    "webpack": "^3.6.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "backpack-core": "^0.4.1",
+    "backpack-core": "^0.4.3",
     "coffee-loader": "^0.8.0",
     "coffee-script": "^1.12.7",
     "eslint": "^4.3.0",

@@ -1,7 +1,7 @@
+const webpack = require('webpack')
+
 module.exports = {
-  /*
-  ** Headers of the page
-  */
+  /* ** Headers of the page */
   head: {
     title: 'starter',
     meta: [
@@ -15,23 +15,19 @@ module.exports = {
       // { rel: 'stylesheet', href: 'https://unpkg.com/element-ui/lib/theme-default/index.css' }
     ],
     script: [
-        { src: '/js/jquery.min.js' }
-        // { src: 'https://unpkg.com/element-ui/lib/index.js' }
+      { src: '/js/jquery.min.js' }
+      // { src: 'https://unpkg.com/element-ui/lib/index.js' }
     ]
   },
-  /*
-  ** Global CSS
-  */
+  /* ** Global CSS*/
   css: [
       // 'element-ui/lib/theme-default/index.css',
       '~/assets/css/main.css',
       // 项目中的 Sass 文件
       { src: '~/assets/scss/main.scss', lang: 'scss' } // 指定 scss 而非 sass
   ],
-  // plugins: ['~plugins/element-ui'],
-  /*
-  ** Add axios globally
-  */
+  //plugins: ['~plugins/element-ui'],
+  /* ** Add axios globally */
   build: {
     postcss: [
         require('autoprefixer')(),
@@ -39,10 +35,8 @@ module.exports = {
         require('postcss-responsive-type')(),
         require('postcss-hexrgba')()
     ],
-    vendor: ['axios','element-ui'],
-    /*
-    ** Run ESLINT on save
-    */
+    vendor: ['axios'],
+    /* ** Run ESLINT on save */
     extend (config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({
@@ -52,6 +46,11 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        '$': 'jquery'
+      })
+    ]
   }
 }

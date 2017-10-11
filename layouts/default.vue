@@ -39,11 +39,6 @@ export default {
   components: {
     HeaderA,LeftSide,MyFooter
   },
-  data () {
-    return {
-      //isActive: false
-    }
-  },
   methods: {
     menuBt(){
       this.$store.dispatch('setIsActive', {
@@ -62,10 +57,6 @@ export default {
     }
   }
 }
-
-//$('#menuBt').on('click',function () {
-//  alert("asdasdasd")
-//});
 </script>
 
 <style>

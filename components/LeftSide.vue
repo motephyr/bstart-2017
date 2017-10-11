@@ -17,18 +17,6 @@
           　<option :value="p" v-for="(p, px) in $store.state.yearPlaces.places">{{p}}</option>
         </select>
       </li>
-      <div id="app">
-        <el-select v-model="value" placeholder="请选择">
-          <el-option
-                  v-for="item in options"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
-          </el-option>
-        </el-select>
-      </div>
-
-
     </ul>
     <ul class="mlist">
       <li class="listLi"><nuxt-link class="listbutton" to="/funding_implementations" >經費執行情形</nuxt-link></li>
@@ -83,26 +71,8 @@ export default {
       })
     }
   },
-  data() {
-    return {
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      value: ''
-    }
+  mounted () {
+    console.log($('.mlist').html())
   }
   // ,
   // data () {
@@ -156,7 +126,7 @@ export default {
         height: 60px;
         color: #129895;
         transition: all 0.2s;
-        background: url("/img/listHover.svg") -6px 6px no-repeat;
+        background-image: url("/img/listHover.svg") -6px 6px no-repeat;
         .listbutton {
           display: block;
           padding: 0 30px;
@@ -180,7 +150,7 @@ export default {
         }
         &.active{
           /*background: #D4F1E6 ;*/
-          background: url("/img/listHover.svg") 0 6px no-repeat;
+          background-image: url("/img/listHover.svg") 0 6px no-repeat;
           .listbutton{
             /*color: #fff;*/
           }
