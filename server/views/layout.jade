@@ -3,7 +3,12 @@ html
     title Gossim
     meta(charset='UTF-8')
     meta(content='width=device-width, initial-scale=1.0', name='viewport')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
     style(type='text/css').
+      body,html{
+      background: #f4f6fd url('/img/logbgimg.svg') bottom center no-repeat;
+        background-size: contain;
+      }
       .mu-banner {
       background-color: #E0ECF4;
       z-index: 100;
@@ -106,25 +111,77 @@ html
       }
       .swingimage {
         position: relative;
-        left: 50px;
         -webkit-transform-origin: 50% 0;
         transform-origin: 50% 0;
         -webkit-animation: swinging 3.5s ease-in-out forwards infinite;
         animation: swinging 3.5s ease-in-out forwards infinite;
+        margin: 0 auto;
       }
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+      .topTitle{
+        text-align: center;
+        padding: 30px 0;
+      }
+      .topTitle img{
+        margin: 12px auto;
+      }
+      .alignCenter{
+        text-align: center;
+      }
+      .loginPanel{
+        text-align: left;
+      }
+      .panel{
+        background-color: rgba(172, 213, 255, 0);
+        border: 0 solid rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      }
+      .panel-default > .panel-heading {
+        color: #333;
+        background-color: rgba(255, 255, 255, 0);
+        border-color: rgba(221, 221, 221, 0);
+      }
+      @media (min-width: 992px){
+        .col-md-offset-4 {
+          margin-left: 0;
+          width: 100%;
+        }
+        .swingimage{
+          width: 60%;
+        }
+      }
+      @media (min-width: 768px){
+        .col-sm-offset-3 {
+          width: 100%;
+        }
+        .swingimage {
+          width: 80%;
+        }
+      }
+      @media (max-width: 400px){
+        .topTitle {
+          padding: 0;
+        }
+        .lblogo {
+          width: 60%;
+        }
+        .topTitle img {
+          margin: 12px auto;
+        }
+        .swingimage {
+          width: 50%;
+          display: none;
+        }
+      }
   body
     #app
-      .mu-banner
-        .mu-banner-container
-          //.mu-logo
-          //  | G
-          img(src="/img/logo.svg")
-          img(src="/img/ministry-of-education.svg")
-          img.swingimage(src="/img/bs-img.svg")
-          h1.mu-banner-title
-            | Gossim
-          h2.mu-banner-sub-title(style='display: none;')
-            | Welcome to Your Vue.js App
-        block content
-    // built files will be auto injected
+      .container.bloc-lg
+        .row
+          .col-xs-12.col-md-8.col-md-offset-2
+            .topTitle
+              img.img-responsive.lazyload.lblogo(src='/img/logo.svg', data-src='/img/logo.svg')
+              img.img-responsive.lazyload(src='/img/ministry-of-education-text.svg', data-src='/img/ministry-of-education-text.svg')
+            .row
+              .col-sm-6.alignCenter
+                img.img-responsive.lazyload.swingimage(src='/img/bs-img.svg', data-src='/img/bs-img.svg')
+              .col-sm-6.loginPanel
+                block content

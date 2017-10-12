@@ -10,44 +10,32 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      // { rel: 'stylesheet', href: '/icon/style.css' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: '/icon/style.css' }
       // { rel: 'stylesheet', href: 'https://unpkg.com/element-ui/lib/theme-default/index.css' }
     ],
     script: [
-      // { src: '/js/jquery.min.js' }
+      { src: '/js/jquery.min.js' }
       // { src: 'https://unpkg.com/element-ui/lib/index.js' }
     ]
   },
   /* ** Global CSS*/
   css: [
-      'element-ui/lib/theme-default/index.css',
-      '~/static/icon/style.css',
-      // '~/assets/css/main.css',
+      // 'element-ui/lib/theme-default/index.css',
+      '~/assets/css/main.css',
       // 项目中的 Sass 文件
       { src: '~/assets/scss/main.scss', lang: 'scss' } // 指定 scss 而非 sass
   ],
-  plugins: [{ src: '~/plugins/element-ui', ssr: true }],
+  //plugins: ['~plugins/element-ui'],
   /* ** Add axios globally */
   build: {
-    vendor: ['axios','element-ui'],
-    // babel: {
-    //   'plugins': [['component', [
-    //     {
-    //       'libraryName': 'element-ui',
-    //       'styleLibraryName': 'theme-default'
-    //     },
-    //     'transform-async-to-generator',
-    //     'transform-runtime'
-    //   ]]],
-    //   comments: true
-    // },
     postcss: [
-      require('autoprefixer')(),
-      require('postcss-nested')(),
-      require('postcss-responsive-type')(),
-      require('postcss-hexrgba')()
+        require('autoprefixer')(),
+        require('postcss-nested')(),
+        require('postcss-responsive-type')(),
+        require('postcss-hexrgba')()
     ],
+    vendor: ['axios'],
     /* ** Run ESLINT on save */
     extend (config, ctx) {
       if (ctx.isClient) {
@@ -58,7 +46,6 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-      config.devtool = false
     },
     plugins: [
       new webpack.ProvidePlugin({
