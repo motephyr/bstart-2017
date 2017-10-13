@@ -69,3 +69,53 @@ a, a:hover, a:focus, a:visited {
   border-top: 1px solid #D9E3E5;
   transition: all 0.5s;
 }
+.pd20{
+  padding: 20px;
+}
+.bgcB{
+  background-color: #2D5D8C;
+}
+
+table.gTable{
+  td,th{
+    color: #9BB6D7;
+    padding: 9px 3px;
+    text-align: right;
+    .el-input{
+      width: 136px;
+      .el-input__inner{
+        /*height: 26px;*/
+        text-align: right;
+        font-size: 18px;
+        color: #1E8F8B;
+      }
+    }
+  }
+}
+
+
+
+
+//.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+//  border: 1px solid #d1dbe5;
+//  border-bottom-color: #fff;
+//  border-radius: 4px 4px 0 0;
+//  background-color: #F4F6FF;
+//}
+//.el-tabs.el-tabs--card{
+//  background-color: #F4F6FF;
+//}
+//.el-tabs__nav-scroll{
+//  background-color: #2D5D8C;
+//}
+
+
+.containerNuxt>div{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 58px;
+  overflow-x: auto;
+  overflow-y: auto;
+}

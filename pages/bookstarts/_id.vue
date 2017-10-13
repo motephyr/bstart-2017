@@ -3,10 +3,10 @@
     <h1>bookstart</h1>
     <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <thead>
       <tr>
         <th></th>
@@ -18,7 +18,7 @@
         <td>{{x.value}}</td>
         <td v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">
           <div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]"> 
-            <input type="text" v-model="bookstarts_1.value[ix][iy]" />
+            <el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>
           </div>
         </td> 
       </tr>
@@ -26,10 +26,10 @@
     </table>
     <button @click="update_data('bookstarts_1')">Update</button>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <thead>
       <tr>
         <th></th>
@@ -41,7 +41,7 @@
         <td>{{x.value}}</td>
         <td v-for="(y, iy) in bookstarts_2.yaxio" :key="y.id">
           <div v-if="bookstarts_2.value.length > ix && bookstarts_2.value[ix]"> 
-            <input type="text" v-model="bookstarts_2.value[ix][iy]" />
+            <el-input type="text" v-model="bookstarts_2.value[ix][iy]" ></el-input>
           </div>
         </td> 
       </tr>
@@ -49,10 +49,10 @@
     </table>
     <button @click="update_data('bookstarts_2')">Update</button>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <thead>
       <tr>
         <th></th>
@@ -64,7 +64,7 @@
         <td>{{x.value}}</td>
         <td v-for="(y, iy) in bookstarts_3.yaxio" :key="y.id">
           <div v-if="bookstarts_3.value.length > ix && bookstarts_3.value[ix]"> 
-            <input type="text" v-model="bookstarts_3.value[ix][iy]" />
+            <el-input type="text" v-model="bookstarts_3.value[ix][iy]" ></el-input>
           </div>
         </td> 
       </tr>
@@ -72,10 +72,10 @@
     </table>
     <button @click="update_data('bookstarts_3')">Update</button>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <thead>
       <tr>
         <th></th>
@@ -87,7 +87,7 @@
         <td>{{x.value}}</td>
         <td v-for="(y, iy) in bookstarts_4.yaxio" :key="y.id">
           <div v-if="bookstarts_4.value.length > ix && bookstarts_4.value[ix]"> 
-            <input type="text" v-model="bookstarts_4.value[ix][iy]" />
+            <el-input type="text" v-model="bookstarts_4.value[ix][iy]" ></el-input>
           </div>
         </td> 
       </tr>
@@ -95,10 +95,10 @@
     </table>
     <button @click="update_data('bookstarts_4')">Update</button>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <thead>
       <tr>
         <th></th>
@@ -110,7 +110,7 @@
         <td>{{x.value}}</td>
         <td v-for="(y, iy) in bookstarts_5.yaxio" :key="y.id">
           <div v-if="bookstarts_5.value.length > ix && bookstarts_5.value[ix]"> 
-            <input type="text" v-model="bookstarts_5.value[ix][iy]" />
+            <el-input type="text" v-model="bookstarts_5.value[ix][iy]" ></el-input>
           </div>
         </td> 
       </tr>
@@ -118,10 +118,10 @@
     </table>
     <button @click="update_data('bookstarts_5')">Update</button>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <thead>
       <tr>
         <th></th>
@@ -133,7 +133,7 @@
         <td>{{x.value}}</td>
         <td v-for="(y, iy) in bookstarts_6.yaxio" :key="y.id">
           <div v-if="bookstarts_6.value.length > ix && bookstarts_6.value[ix]"> 
-            <input type="text" v-model="bookstarts_6.value[ix][iy]" />
+            <el-input type="text" v-model="bookstarts_6.value[ix][iy]" ></el-input>
           </div>
         </td> 
       </tr>

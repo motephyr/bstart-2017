@@ -12,7 +12,7 @@
     <div id="rightSide">
       <div class="rightHead">
         <div id="menuBt" @click="menuBt"><i class="icon-list-menu"></i></div>
-        <div class="pagetitle">閱讀推廣與館藏充實</div>
+        <div class="pagetitle">{{pagetitle}}</div>
         <a class="logoW" href="https://www.ntl.edu.tw/" target="_blank">
           <img class="logoW-A" src="/img/logo-w.svg" alt="">
           <img class="logoW-B" src="/img/logo-img.svg" alt="">
@@ -36,6 +36,11 @@ import LeftSide from '~/components/LeftSide.vue'
 import MyFooter from '~/components/Footer.vue'
 
 export default {
+  data() {
+    return {
+      pagetitle: "sadsadsadas asd sad dsf"
+    }
+  },
   components: {
     HeaderA,LeftSide,MyFooter
   },
@@ -76,6 +81,7 @@ export default {
       right: 0;
       background-color: #00908C;
       height: 58px;
+      font-weight: 300;
       z-index: 9;
       .toindex{
         line-height: 58px;
@@ -109,7 +115,8 @@ export default {
       width: 256px;
       overflow-x: hidden;
       overflow-y: auto;
-      background-color: #FFF;
+      background: #FFF url("/img/leftSideList-bgimg.svg") bottom center no-repeat;
+      background-size: contain;
       z-index:10;
       -webkit-overflow-scrolling: touch;
     }
@@ -190,18 +197,12 @@ export default {
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       .containerNuxt{
-        padding: 20px;
+        /*padding: 20px;*/
       }
     }
   }
   #myFooter{
 
-  }
-  .container{
-    margin: 0;
-    width: 100%;
-    padding: 100px 0;
-    text-align: center;
   }
   .title{
     color: #FF2A7D;

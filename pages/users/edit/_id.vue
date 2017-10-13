@@ -18,27 +18,27 @@ import axios from '~/plugins/axios'
 // fields definition
 var tableColumns = [
   {
-    name: 'name',
+    name: '姓名',
     type: 'string'
   },
   {
-    name: 'email',
+    name: '電子郵件',
     type: 'string'
   },
   {
-    name: 'account',
+    name: '帳號',
     type: 'string'
   },
   {
-    name: 'phone',
+    name: '電話',
     type: 'string'
   },
   {
-    name: 'mobile',
+    name: '行動',
     type: 'string'
   },
   {
-    name: 'area',
+    name: '縣市',
     type: 'string'
   },
   {
