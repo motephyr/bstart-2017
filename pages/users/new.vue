@@ -1,9 +1,17 @@
 <template>
   <div>
-    <vue-form :fields="fields"
-    mode="new"
-    model="user"
-    api-url="/api/users/"></vue-form>
+    <div class="nuxtMainPanel">
+      <div class="pd20">
+        <vue-form :fields="fields"
+        mode="new"
+        model="user"
+        api-url="/api/users/"></vue-form>
+      </div>
+    </div>
+    <div id="footerBar">
+      <nuxt-link class="ftBt" to="/users/list"><i class="icon-reply"></i> 返回</nuxt-link>
+      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+    </div>
   </div>
 </template>
 
@@ -44,6 +52,7 @@ export default {
   },
   data () {
     return {
+      pagetitle: "tableColumns",
       fields: tableColumns
     }
   }

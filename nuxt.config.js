@@ -20,6 +20,7 @@ module.exports = {
   /* ** Global CSS*/
   css: [
       'element-ui/lib/theme-default/index.css',
+      '~/assets/css/bootstrap.min.css',
       '~/static/icon/style.css',
       // '~/assets/css/main.css',
       // 项目中的 Sass 文件
@@ -28,7 +29,7 @@ module.exports = {
   plugins: [{ src: '~/plugins/element-ui', ssr: true }],
   /* ** Add axios globally */
   build: {
-    vendor: ['axios','element-ui'],
+    vendor: ['axios','element-ui','jquery'],
     // babel: {
     //   'plugins': [['component', [
     //     {
@@ -60,7 +61,9 @@ module.exports = {
     },
     plugins: [
       new webpack.ProvidePlugin({
-        '$': 'jquery'
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery'
       })
     ]
   }

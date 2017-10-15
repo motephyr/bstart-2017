@@ -1,16 +1,25 @@
 <template>
-  <section class="container">
-    <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
-    <h1 class="title">
-      User
-    </h1>
-    <h2 class="info">
-      {{ user.name }}
-    </h2>
-    <nuxt-link class="button" to="/">
-      Users
-    </nuxt-link>
-  </section>
+  <div>
+    <div class="nuxtMainPanel">
+      <section class="container">
+        <h1>XXXX</h1>
+        <img src="~assets/img/logo.png" alt="Nuxt.js Logo" class="logo" />
+        <h1 class="title">
+          User
+        </h1>
+        <h2 class="info">
+          {{ user.name }}
+        </h2>
+        <nuxt-link class="button" to="/">
+          Users
+        </nuxt-link>
+      </section>
+    </div>
+    <div id="footerBar">
+      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
+      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+    </div>
+  </div>
 </template>
 
 <script>

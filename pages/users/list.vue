@@ -1,34 +1,36 @@
 <template>
-  <div class="pd20">
-    <!--<h1>reading_activities</h1>-->
-    <!--<p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>-->
-    <!--<div id="headerBar">-->
+  <div>
+    <div class="nuxtMainPanel">
+      <!--<h1>reading_activities</h1>-->
+      <!--<p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>-->
+      <!--<div id="headerBar">-->
       <!--<div id="newUser" @click="new_user">+</div>-->
-    <!--</div>-->
-    <table class="usersTb">
-      <thead>
-      <tr>
-        <th v-for="(value, key) in users[0]">{{(key != 'created_at' && key != 'updated_at') ? key : ''}}</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="user in users" @click="edit_user(user._id)" title="編輯帳號">
-        <td>{{user._id}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.accountLocked}}</td>
-        <td>{{user.account}}</td>
-        <td>{{user.phone}}</td>
-        <td>{{user.mobile}}</td>
-        <td>{{user.area}}</td>
-        <!--<td><button>編輯</button></td>-->
-      </tr>
-      </tbody>
-    </table>
-    <!--<button @click="new_user">New User</button>-->
-    <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
+      <!--</div>-->
+      <table class="usersTb">
+        <thead>
+        <tr>
+          <th v-for="(value, key) in users[0]">{{(key != 'created_at' && key != 'updated_at') ? key : ''}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in users" @click="edit_user(user._id)" title="編輯帳號">
+          <td class="icon-checkmark3">{{user._id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.accountLocked}}</td>
+          <td>{{user.account}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.mobile}}</td>
+          <td>{{user.area}}</td>
+          <!--<td><button>編輯</button></td>-->
+        </tr>
+        </tbody>
+      </table>
+      <!--<button @click="new_user">New User</button>-->
+      <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
+    </div>
     <div id="footerBar">
-      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
+      <!--<nuxt-link class="ftBt" to="/">取消</nuxt-link>-->
       <div class="ftBt" @click="new_user"><i class="icon-user-plus"></i> 新曾帳號</div>
     </div>
   </div>
@@ -71,8 +73,7 @@ export default {
     border-collapse: collapse;
     width: 100%;
     box-shadow: 0 0 2px rgba(79, 97, 102, 0.6);
-    margin-bottom: 64px;
-    border-radius: 8px;
+    border-radius: 3px;
     overflow: hidden;
     tr{
       th,td{
@@ -80,11 +81,19 @@ export default {
         height: 33px;
         vertical-align:middle;
         color: #A1A1A1;
+        border-right: 1px solid rgba(219, 223, 228, 0.3);
       }
       border-bottom: 1px solid #DBDFE4;
     }
-    thead{}
+    thead{
+      /*position: fixed;*/
+      background-color: #F4F6FD;
+      z-index: 2;
+    }
     tbody{
+      /*position: absolute;*/
+      margin-top: 40px;
+      z-index: 1;
       tr{
         background-color: #FFF;
         cursor: pointer;
@@ -98,38 +107,61 @@ export default {
           color: #0070D2;
         }
         th{}
-        td{}
-      }
-    }
-  }
-  #footerBar{
-    .ftBt{
-      position: relative;
-      background-color: #326EAB;
-      /*border: 1px solid #1B99DD;*/
-      color: #F4F6F9;
-      height: 36px;
-      margin:11px;
-      padding: 0 12px;
-      border-radius: 6px;
-      line-height: 36px;
-      font-size: 18px;
-      text-align: center;
-      display: inline-block;
-      cursor: pointer;
-      &:hover{
-        background-color: #1E8F8B;
+        td{
+          &.icon-checkmark3:before{
+            font-size: 26px;
+            color: #7ED321;
+          }
+          &.icon-checkmark3.off:before{
+            color: #BFCDE4;
+          }
+        }
       }
     }
   }
   @media (max-width: 800px) {
-    #footerBar{
-      left: 0;
+    .usersTb{
+      thead{
+        th{
+          display: table-cell;
+        }
+        th:nth-child(1n+6){
+          display: none;
+        }
+      }
+      tbody{
+        td{
+          display: table-cell;
+        }
+        td:nth-child(1n+6){
+          display: none;
+        }
+      }
     }
   }
-  @media (min-width: 800px) {
-    #footerBar{
-      left: 256px;
+  @media (max-width: 600px) {
+    .usersTb{
+      thead{
+        th{
+          display: table-cell;
+        }
+        th:nth-child(1n+4){
+          display: none;
+        }
+      }
+      tbody{
+        td{
+          display: table-cell;
+        }
+        td:nth-child(1n+4){
+          display: none;
+        }
+      }
     }
   }
+  /*@media (min-width: 800px) {*/
+    /*#footerBar{*/
+      /*left: 256px;*/
+    /*}*/
+  /*}*/
 </style>

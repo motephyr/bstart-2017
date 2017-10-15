@@ -8,11 +8,12 @@
       <div id="leftSideList">
         <left-side/>
       </div>
+      <div class="leftSideBG" @click="menuBtCancel"></div>
     </div>
     <div id="rightSide">
       <div class="rightHead">
         <div id="menuBt" @click="menuBt"><i class="icon-list-menu"></i></div>
-        <div class="pagetitle">{{pagetitle}}</div>
+        <div class="pagetitle">{{ $store.state.place }}</div>
         <a class="logoW" href="https://www.ntl.edu.tw/" target="_blank">
           <img class="logoW-A" src="/img/logo-w.svg" alt="">
           <img class="logoW-B" src="/img/logo-img.svg" alt="">
@@ -36,9 +37,12 @@ import LeftSide from '~/components/LeftSide.vue'
 import MyFooter from '~/components/Footer.vue'
 
 export default {
+  asyncData (context) {
+    // called every time before loading the component
+    return { pagetitle: "sadsadsadas asd sad dsf" }
+  },
   data() {
     return {
-      pagetitle: "sadsadsadas asd sad dsf"
     }
   },
   components: {
@@ -118,21 +122,28 @@ export default {
       background: #FFF url("/img/leftSideList-bgimg.svg") bottom center no-repeat;
       background-size: contain;
       z-index:10;
+      /*border-right: 1px solid #D9E3E5;*/
       -webkit-overflow-scrolling: touch;
+      .nav-list{
+        margin-bottom: 58px;
+      }
+    }
+    .leftSideBG{
+      display: none;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 8;
     }
     &.open{
       left: 0;
-      &:after{
-        content: "";
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        z-index: 8;
+      .leftSideBG{
+        display: block;
       }
     }
   }
@@ -177,6 +188,7 @@ export default {
         font-size: 1.1em;
         transition: all 0.5s;
         cursor: default;
+        overflow: hidden;
       }
       .logoW{
         position: absolute;
@@ -193,6 +205,7 @@ export default {
       left: 0;
       right: 0;
       bottom: 0;
+      /*border-left: 2px solid #F4F6FD;*/
       overflow-x: auto;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
@@ -226,7 +239,7 @@ export default {
     #rightSide .rightHead .pagetitle{
       right: 58px;
     }
-    #leftSide.open:after {
+    #leftSide.open .leftSideBG {
       content: "";
       position: fixed;
       width: 100%;
@@ -254,7 +267,7 @@ export default {
     #rightSide .rightHead .pagetitle{
       right: 200px;
     }
-    #leftSide.open:after {
+    #leftSide.open .leftSideBG {
       content: "";
       position: fixed;
       width: 0;

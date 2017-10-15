@@ -1,48 +1,66 @@
 <template>
-  <!--<div class="pd20 bgcB">-->
-  <div class="pd20">
-    <div class="fIHeader">
-      <div class="RegularGoor"><br>345,678</div>
-      <div class="CapitalGate"><br>345,678</div>
-      <div class="Subtotal"><br>345,678</div>
-    </div>
-      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane label="多元閱讀" name="first">
-          <div v-for="struct in structs" :key="struct.sub_field">
-            <table class="gTable">
-              <!--<colgroup>-->
-                <!--<col style="background-color:red">-->
-              <!--</colgroup>-->
-              <thead>
-              <tr>
-                <th></th>
-                <!--<th>{{struct.sub_field}}</th>-->
-                <th v-for="y in struct.yaxio" :key="y.id">{{y.value}}</th>
-                <th>小計</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="(x, ix) in struct.xaxio" :key="x.id">
-                <td>{{x.value}}</td>
-                <td v-for="(y, iy) in struct.yaxio" :key="y.id">
-                  <div v-if="struct.value.length > ix && struct.value[ix]">
-                    <!--<input type="text" v-model="struct.value[ix][iy]" />-->
-                    <el-input v-model="struct.value[ix][iy]" placeholder=""></el-input>
-                  </div>
-                </td>
-                <td></td>
-              </tr>
-              </tbody>
-            </table>
-            <button @click="update_data(struct.sub_field)">Update</button>
-          </div>
+  <div>
+    <div class="nuxtMainPanel">
+    <div class="pd20">
+      <div class="fIHeader">
+        <div class="col-6 col-sm-3 col-md-3 col-lg-3 RegularGoor"><br>345,678</div>
+        <div class="col-6 col-sm-3 col-md-3 col-lg-3 CapitalGate"><br>345,678</div>
+        <div class="col-6 col-sm-3 col-md-3 col-lg-3 Subtotal"><br>345,678</div>
+      </div>
+        <el-tabs v-model="activeName" type="border-card" @tab-click="handleClick">
+          <el-tab-pane name="first">
+            <span slot="label">多元閱讀</span>
+            <div v-for="struct in structs" :key="struct.sub_field">
+              <table class="gTable">
+                <colgroup>
+                  <col>
+                  <col>
+                  <col>
+                </colgroup>
+                <thead>
+                <tr>
+                  <th></th>
+                  <!--<th>{{struct.sub_field}}</th>-->
+                  <th v-for="y in struct.yaxio" :key="y.id">{{y.value}}</th>
+                  <th>小計</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(x, ix) in struct.xaxio" :key="x.id">
+                  <th>{{x.value}}</th>
+                  <td v-for="(y, iy) in struct.yaxio" :key="y.id">
+                    <div v-if="struct.value.length > ix && struct.value[ix]">
+                      <!--<input type="text" v-model="struct.value[ix][iy]" />-->
+                      <!--<el-input :disabled="true" v-model="struct.value[ix][iy]" placeholder=""></el-input>-->
+                      <el-input v-model="struct.value[ix][iy]" placeholder=""></el-input>
+                    </div>
+                  </td>
+                  <td></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                  <th></th>
+                  <td></td>
+                  <td></td>
+                </tfoot>
+              </table>
+              <button @click="update_data(struct.sub_field)">Update</button>
+            </div>
 
-          <nuxt-link to="/">Back to the home page</nuxt-link>
-        </el-tab-pane>
-        <el-tab-pane label="本土語言" name="second"></el-tab-pane>
-      </el-tabs>
-    <h1>funding_implementations</h1>
-    <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
+            <nuxt-link to="/">Back to the home page</nuxt-link>
+          </el-tab-pane>
+          <el-tab-pane name="second">
+            <span slot="label">本土語言</span>
+          </el-tab-pane>
+        </el-tabs>
+      <h1>funding_implementations</h1>
+      <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
+    </div>
+    </div>
+    <div id="footerBar">
+      <nuxt-link class="ftBt" to="/"><i class="icon-chevron-thin-left"></i> 返回</nuxt-link>
+      <div class="ftBt"  @click="addYear()"><i class="icon-assignment"></i> 新增年度計畫</div>
+    </div>
   </div>
 </template>
 
@@ -92,12 +110,57 @@ export default {
   },
   created () {
     this.getData()
+  },
+  mounted: function () {
+    $(document).ready(function () {
+      //console.log($('body').html());
+    });
   }
 }
 </script>
 <style>
   h1{
     color: #009558;
+  }
+  .fIHeader{
+    padding: 0 0 18px 0;
+    .RegularGoor, .CapitalGate, .Subtotal {
+      text-align: right;
+      font-size: 20px;
+      color: #4D6373;
+      display: inline-block;
+      margin: 12px 0;
+    }
+    .RegularGoor{
+      color: #79A300;
+    }
+    .CapitalGate{
+      color: #008BD0;
+    }
+    .Subtotal{
+      color: #00C4C4;
+    }
+    .RegularGoor:before, .CapitalGate:before, .Subtotal:before {
+      font-size: 14px;
+      color: #AFBCD1;
+      margin: 2px 0;
+      height: 22px;
+      line-height: 22px;
+    }
+    .RegularGoor:before {
+      content: '經常門';
+    }
+    .CapitalGate:before {
+      content: '資本門';
+    }
+    .Subtotal:before {
+      content: '總計';
+    }
+    .RegularGoor:after,.CapitalGate:after,.Subtotal:after {
+      content: '元';
+      font-size: 14px;
+      color: #AFBCD1;
+    }
   }
   @media (max-width: 400px) {
     table{

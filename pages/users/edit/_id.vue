@@ -1,13 +1,21 @@
 <template>
   <div>
-    <vue-form :fields="fields"
-    mode="edit"
-    model="user"
-    :api-url="apiUrl"></vue-form>
-    <button @click="lock_user(params.id)">啟用/停用</button>
-    <button @click="reset_pwdResetToken(params.id)">更新驗證碼</button>
+    <div class="nuxtMainPanel">
+      <div class="pd20">
+        <vue-form :fields="fields"
+        mode="edit"
+        model="user"
+        :api-url="apiUrl"></vue-form>
+        <button @click="lock_user(params.id)">啟用/停用</button>
+        <button @click="reset_pwdResetToken(params.id)">更新驗證碼</button>
 
-    <button @click="delete_user(params.id)">Delete</button>
+        <button @click="delete_user(params.id)">Delete</button>
+      </div>
+    </div>
+    <div id="footerBar">
+      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
+      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+    </div>
   </div>
 </template>
 

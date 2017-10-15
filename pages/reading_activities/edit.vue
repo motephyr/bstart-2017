@@ -1,18 +1,17 @@
 <template>
   <div>
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable sminputW80">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <tbody>
       <tr v-for="(x, ix) in reading_activities_edit.xaxio" :key="x.id">
-        <td>{{x.value}}<button @click="showHide(x.id)">Show/Hide</button></td>
+        <td>{{x.value}}<el-button @click="showHide(x.id)">Show/Hide</el-button></td>
       </tr>
       </tbody>
     </table>
-    <button @click="add('reading_activities_1')">Add</button>
-    <input type="text" v-model="xaxio_name" />
-
+    <el-button @click="add('reading_activities_1')">Add</el-button>
+    <el-input type="text" v-model="xaxio_name"></el-input>
   </div>
 </template>
 

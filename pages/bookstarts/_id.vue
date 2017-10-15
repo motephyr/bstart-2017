@@ -1,147 +1,155 @@
 <template>
   <div>
-    <h1>bookstart</h1>
-    <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
+    <div class="nuxtMainPanel">
+      <div class="pd20">
+        <h1>bookstart</h1>
+        <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
 
-    <table class="gTable">
-      <!--<colgroup>-->
-        <!--<col style="background-color:red">-->
-      <!--</colgroup>-->
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in bookstarts_1.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">
-          <div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]"> 
-            <el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('bookstarts_1')">Update</button>
+        <table class="gTable">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in bookstarts_1.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">
+              <div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]">
+                <el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button @click="update_data('bookstarts_1')">Update</button>
 
-    <table class="gTable">
-      <!--<colgroup>-->
-        <!--<col style="background-color:red">-->
-      <!--</colgroup>-->
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in bookstarts_2.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in bookstarts_2.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in bookstarts_2.yaxio" :key="y.id">
-          <div v-if="bookstarts_2.value.length > ix && bookstarts_2.value[ix]"> 
-            <el-input type="text" v-model="bookstarts_2.value[ix][iy]" ></el-input>
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('bookstarts_2')">Update</button>
+        <table class="gTable">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in bookstarts_2.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in bookstarts_2.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in bookstarts_2.yaxio" :key="y.id">
+              <div v-if="bookstarts_2.value.length > ix && bookstarts_2.value[ix]">
+                <el-input type="text" v-model="bookstarts_2.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button @click="update_data('bookstarts_2')">Update</button>
 
-    <table class="gTable">
-      <!--<colgroup>-->
-        <!--<col style="background-color:red">-->
-      <!--</colgroup>-->
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in bookstarts_3.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in bookstarts_3.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in bookstarts_3.yaxio" :key="y.id">
-          <div v-if="bookstarts_3.value.length > ix && bookstarts_3.value[ix]"> 
-            <el-input type="text" v-model="bookstarts_3.value[ix][iy]" ></el-input>
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('bookstarts_3')">Update</button>
+        <table class="gTable">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in bookstarts_3.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in bookstarts_3.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in bookstarts_3.yaxio" :key="y.id">
+              <div v-if="bookstarts_3.value.length > ix && bookstarts_3.value[ix]">
+                <el-input type="text" v-model="bookstarts_3.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button @click="update_data('bookstarts_3')">Update</button>
 
-    <table class="gTable">
-      <!--<colgroup>-->
-        <!--<col style="background-color:red">-->
-      <!--</colgroup>-->
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in bookstarts_4.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in bookstarts_4.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in bookstarts_4.yaxio" :key="y.id">
-          <div v-if="bookstarts_4.value.length > ix && bookstarts_4.value[ix]"> 
-            <el-input type="text" v-model="bookstarts_4.value[ix][iy]" ></el-input>
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('bookstarts_4')">Update</button>
+        <table class="gTable">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in bookstarts_4.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in bookstarts_4.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in bookstarts_4.yaxio" :key="y.id">
+              <div v-if="bookstarts_4.value.length > ix && bookstarts_4.value[ix]">
+                <el-input type="text" v-model="bookstarts_4.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button @click="update_data('bookstarts_4')">Update</button>
 
-    <table class="gTable">
-      <!--<colgroup>-->
-        <!--<col style="background-color:red">-->
-      <!--</colgroup>-->
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in bookstarts_5.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in bookstarts_5.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in bookstarts_5.yaxio" :key="y.id">
-          <div v-if="bookstarts_5.value.length > ix && bookstarts_5.value[ix]"> 
-            <el-input type="text" v-model="bookstarts_5.value[ix][iy]" ></el-input>
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('bookstarts_5')">Update</button>
+        <table class="gTable">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in bookstarts_5.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in bookstarts_5.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in bookstarts_5.yaxio" :key="y.id">
+              <div v-if="bookstarts_5.value.length > ix && bookstarts_5.value[ix]">
+                <el-input type="text" v-model="bookstarts_5.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button @click="update_data('bookstarts_5')">Update</button>
 
-    <table class="gTable">
-      <!--<colgroup>-->
-        <!--<col style="background-color:red">-->
-      <!--</colgroup>-->
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in bookstarts_6.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in bookstarts_6.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in bookstarts_6.yaxio" :key="y.id">
-          <div v-if="bookstarts_6.value.length > ix && bookstarts_6.value[ix]"> 
-            <el-input type="text" v-model="bookstarts_6.value[ix][iy]" ></el-input>
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('bookstarts_6')">Update</button>
+        <table class="gTable">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in bookstarts_6.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in bookstarts_6.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in bookstarts_6.yaxio" :key="y.id">
+              <div v-if="bookstarts_6.value.length > ix && bookstarts_6.value[ix]">
+                <el-input type="text" v-model="bookstarts_6.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button @click="update_data('bookstarts_6')">Update</button>
 
-    <nuxt-link to="/">Back to the home page</nuxt-link>
+        <nuxt-link to="/">Back to the home page</nuxt-link>
+      </div>
+    </div>
+    <div id="footerBar">
+      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
+      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+    </div>
   </div>
 </template>
 

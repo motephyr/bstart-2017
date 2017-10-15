@@ -85,5 +85,4 @@ export const actions = {
   setIsActive ({ commit }, { is_active }) {
     commit('SET_IS_ACTIVE', is_active)
   }
-
 }

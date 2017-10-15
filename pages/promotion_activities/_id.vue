@@ -1,80 +1,87 @@
 <template>
   <div>
-    <h1>promotion_activities</h1>
-    <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
+    <div class="nuxtMainPanel">
+      <div class="pd20">
+        <h1>promotion_activities</h1>
+        <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in promotion_activities_1.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in promotion_activities_1.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in promotion_activities_1.yaxio" :key="y.id">
-          <div v-if="promotion_activities_1.value.length > ix && promotion_activities_1.value[ix]"> 
-            <input type="text" v-model="promotion_activities_1.value[ix][iy]" />
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('promotion_activities_1')">Update</button>
+        <table class="gTable sminputW80">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in promotion_activities_1.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in promotion_activities_1.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in promotion_activities_1.yaxio" :key="y.id">
+              <div v-if="promotion_activities_1.value.length > ix && promotion_activities_1.value[ix]">
+                <el-input type="text" v-model="promotion_activities_1.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <el-button @click="update_data('promotion_activities_1')">Update</el-button>
 
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in promotion_activities_2.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in promotion_activities_2.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in promotion_activities_2.yaxio" :key="y.id">
-          <div v-if="promotion_activities_2.value.length > ix && promotion_activities_2.value[ix]"> 
-            <input type="text" v-model="promotion_activities_2.value[ix][iy]" />
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('promotion_activities_2')">Update</button>
-    
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
-      <thead>
-      <tr>
-        <th></th>
-        <th v-for="y in promotion_activities_3.yaxio" :key="y.id">{{y.value}}</th> 
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(x, ix) in promotion_activities_3.xaxio" :key="x.id">
-        <td>{{x.value}}</td>
-        <td v-for="(y, iy) in promotion_activities_3.yaxio" :key="y.id">
-          <div v-if="promotion_activities_3.value.length > ix && promotion_activities_3.value[ix]"> 
-            <input type="text" v-model="promotion_activities_3.value[ix][iy]" />
-          </div>
-        </td> 
-      </tr>
-      </tbody>
-    </table>
-    <button @click="update_data('promotion_activities_3')">Update</button>
+        <table class="gTable sminputW80">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in promotion_activities_2.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in promotion_activities_2.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in promotion_activities_2.yaxio" :key="y.id">
+              <div v-if="promotion_activities_2.value.length > ix && promotion_activities_2.value[ix]">
+                <el-input type="text" v-model="promotion_activities_2.value[ix][iy]" ></el-input>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <el-button @click="update_data('promotion_activities_2')">Update</el-button>
 
+        <table class="gTable sminputW80">
+          <!--<colgroup>-->
+            <!--<col style="background-color:red">-->
+          <!--</colgroup>-->
+          <thead>
+          <tr>
+            <th></th>
+            <th v-for="y in promotion_activities_3.yaxio" :key="y.id">{{y.value}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(x, ix) in promotion_activities_3.xaxio" :key="x.id">
+            <td>{{x.value}}</td>
+            <td v-for="(y, iy) in promotion_activities_3.yaxio" :key="y.id">
+              <div v-if="promotion_activities_3.value.length > ix && promotion_activities_3.value[ix]">
+                <el-input type="text" v-model="promotion_activities_3.value[ix][iy]" />
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <el-button @click="update_data('promotion_activities_3')">Update</el-button>
 
-    <nuxt-link to="/">Back to the home page</nuxt-link>
-    <edit :promotion_activities_edit="promotion_activities_edit" />
+        <nuxt-link to="/">Back to the home page</nuxt-link>
+        <edit :promotion_activities_edit="promotion_activities_edit" />
+      </div>
+    </div>
+    <div id="footerBar">
+      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
+      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+    </div>
   </div>
 </template>
 

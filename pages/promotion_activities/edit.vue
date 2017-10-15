@@ -1,19 +1,19 @@
 <template>
   <div>
-    <table style="border: 1px solid black;">
-      <colgroup>
-        <col style="background-color:red">
-      </colgroup>
+    <table class="gTable sminputW80">
+      <!--<colgroup>-->
+        <!--<col style="background-color:red">-->
+      <!--</colgroup>-->
       <tbody>
       <tr v-for="(x, ix) in promotion_activities_edit.xaxio" :key="x.id">
-        <td>{{x.value}}<button @click="showHide(x.id)">Show/Hide</button></td>
+        <td>{{x.value}}<el-button @click="showHide(x.id)">Show/Hide</el-button></td>
       </tr>
       </tbody>
     </table>
-    <button @click="add('promotion_activities_2')">Add</button>
-    <input type="text" v-model="xaxio_name" />
-
+    <el-button @click="add('promotion_activities_2')">Add</el-button>
+    <el-input type="text" v-model="xaxio_name" ></el-input>
   </div>
+</div>
 </template>
 
 <script>

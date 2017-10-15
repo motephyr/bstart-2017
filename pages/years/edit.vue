@@ -1,52 +1,64 @@
 <template>
-  <div class="">
-    <ul id="allYear">
-        <li class="single">
-            <div class="year">106</div>
-            <div class="RegularGoor"><br>345,678</div>
-            <div class="CapitalGate"><br>345,678</div>
-            <div class="Subtotal"><br>345,678</div>
-            <el-switch v-model="valueSw106" on-color="#00D9AD" off-color="#ff4949"></el-switch>
-            <el-date-picker v-model="value106" type="date" placeholder="选择日期" :picker-options="pickerOptions0"></el-date-picker>
-        </li>
-        <li class="single">
-            <div class="year">107</div>
-            <div class="RegularGoor"><br>345,678</div>
-            <div class="CapitalGate"><br>345,678</div>
-            <div class="Subtotal"><br>345,678</div>
-            <el-switch v-model="valueSw107" on-color="#00D9AD" off-color="#ff4949"></el-switch>
-            <el-date-picker v-model="value107" type="date" placeholder="选择日期" :picker-options="pickerOptions0"></el-date-picker>
-        </li>
-        <li class="single">
-            <div class="year">108</div>
-            <div class="RegularGoor"><br>345,678</div>
-            <div class="CapitalGate"><br>345,678</div>
-            <div class="Subtotal"><br>345,678</div>
-            <el-switch v-model="valueSw108" on-color="#00D9AD" off-color="#ff4949"></el-switch>
-            <el-date-picker v-model="value108" type="date" placeholder="选择日期" :picker-options="pickerOptions0"></el-date-picker>
-        </li>
-        <li class="single">
-            <div class="year">109</div>
-            <div class="RegularGoor"><br>345,678</div>
-            <div class="CapitalGate"><br>345,678</div>
-            <div class="Subtotal"><br>345,678</div>
-            <el-switch v-model="valueSw109" on-color="#00D9AD" off-color="#ff4949"></el-switch>
-            <el-date-picker v-model="value109" type="date" placeholder="选择日期" :picker-options="pickerOptions0"></el-date-picker>
-        </li>
-        <li class="single">
-            <div class="year">110</div>
-            <div class="RegularGoor"><br>345,678</div>
-            <div class="CapitalGate"><br>345,678</div>
-            <div class="Subtotal"><br>345,678</div>
-            <el-switch v-model="valueSw110" on-color="#00D9AD" off-color="#ff4949"></el-switch>
-            <el-date-picker v-model="value110" type="date" placeholder="选择日期" :picker-options="pickerOptions0"></el-date-picker>
-        </li>
-    </ul>
-    <h1>歷年計畫</h1>
-　  <div :value="p.id" v-for="p in years">{{p}}</div>
-      <input type="text">
-    <button @click="addYear()">addYear</button>
-    <nuxt-link to="/">Back to the home page</nuxt-link>
+  <div>
+    <div class="nuxtMainPanel">
+      <div class="">
+          <h1>歷年計畫</h1>
+          　  <div :value="p.id" v-for="p in years">{{p}}</div>
+          <!--<button @click="addYear()">addYear</button>-->
+          <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
+        <ul id="allYear" class="container mgCenter">
+            <li class="single row">
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 year">110</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor"><br>215,345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 CapitalGate"><br>345,345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 Subtotal"><br>3,945,345,678</div>
+                <div class="col-12 col-sm-10 col-md-8 col-lg-2 dateArrival">
+                    <el-date-picker v-model="value110" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker>
+                </div>
+            </li>
+            <li class="single">
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 year">109</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor"><br>245,345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 CapitalGate"><br>345,345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 Subtotal"><br>3,945,345,678</div>
+                <div class="col-12 col-sm-10 col-md-8 col-lg-2 dateArrival">
+                    <el-date-picker v-model="value109" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker>
+                </div>
+            </li>
+            <li class="single">
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 year">108</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor"><br>345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 CapitalGate"><br>345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 Subtotal"><br>345,678</div>
+                <div class="col-12 col-sm-10 col-md-8 col-lg-2 dateArrival">
+                    <el-date-picker v-model="value108" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker>
+                </div>
+            </li>
+            <li class="single">
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 year">107</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor"><br>345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 CapitalGate"><br>345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 Subtotal"><br>345,678</div>
+                <div class="col-12 col-sm-10 col-md-8 col-lg-2 dateArrival">
+                    <el-date-picker v-model="value107" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker>
+                </div>
+            </li>
+            <li class="single">
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 year">106</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor"><br>345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 CapitalGate"><br>345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-3 Subtotal"><br>345,678</div>
+                <div class="col-12 col-sm-10 col-md-8 col-lg-2 dateArrival">
+                    <el-date-picker v-model="value106" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker>
+                </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+    <div id="footerBar">
+        <nuxt-link class="ftBt" to="/"><i class="icon-chevron-thin-left"></i> 返回</nuxt-link>
+        <div class="ftBt"  @click="addYear()"><i class="icon-plus4"></i> 新增年度計畫</div>
+    </div>
   </div>
 </template>
 
@@ -106,34 +118,54 @@ export default {
 
 <style>
   #allYear{
+      &.mgCenter{
+          text-align: center;
+          margin: 0 auto;
+      }
       .single{
           display: block;
-          background-color: #2A639C;
-          padding: 12px 0;
-          border-bottom: 1px solid #144E90;
-          width: 100%;
+          background-color: #FFF;
+          padding: 12px;
+          margin: 22px;
           position: relative;
-          float: left;
+          border-radius: 12px;
+          box-shadow: 0 1px 3px 0 rgba(134, 168, 194, 0.83);
           .year{
-              text-align: left;
-              font-size: 36px;
-              color: #00D9AD;
-              display: inline-block;
-              margin: 12px 5%;
-          }
-          .RegularGoor,.CapitalGate,.Subtotal{
               text-align: right;
-              font-size: 20px;
-              color: #C5EAFE;
+              font-size: 36px;
+              font-weight: 300;
+              color: #00BE9A;
               display: inline-block;
-              margin: 12px 5%;
+              margin: 6px 0;
           }
-          .RegularGoor{}
-          .CapitalGate{}
-          .Subtotal{}
-          .year:after,.RegularGoor:before,.CapitalGate:before,.Subtotal:before{
-              font-size: 14px;
-              color: #5496D7;
+          .RegularGoor,.CapitalGate,.Subtotal,.dateArrival{
+              text-align: right;
+              display: inline-block;
+              margin: 6px 0;
+          }
+          .RegularGoor{
+              color: #5CA300;
+              font-size: 16px;
+          }
+          .CapitalGate{
+              color: #008BD0;
+              font-size: 16px;
+          }
+          .Subtotal{
+              color: #00C4C4;
+              font-size: 20px;
+          }
+          .dateArrival{
+              text-align: right;
+              .el-date-editor{
+                  width: 100%;
+                  /*margin: 0 10px;*/
+              }
+          }
+          .year:after,.RegularGoor:before,.CapitalGate:before,.Subtotal:before,.dateArrival:before{
+              font-size: 13px;
+              color: #AFBCD1;
+              font-weight: 300;
           }
           .year:after{
               content: ' 年度';
@@ -147,18 +179,30 @@ export default {
           .Subtotal:before{
               content: '總計';
           }
-          .el-switch{
-              /*float: right;*/
-              margin: 6px 10px;
+          .dateArrival:before{
+              content: '編輯期間至';
+              display: block;
+              padding: 0 0 5px 12px;
           }
-          .el-date-editor{
-              /*float: right;*/
-              width: 130px;
-              margin: 0 10px;
-              .el-input__inner{
-                  background-color: #2761A0;
-                  color: #70fff5;
-                  cursor: pointer;
+          .RegularGoor:after,.CapitalGate:after,.Subtotal:after {
+              content: '/元';
+              font-size: 14px;
+              color: #AFBCD1;
+              padding-left: 2px;
+          }
+      }
+  }
+  @media (max-width: 400px) {
+      #allYear{
+          .single{
+              padding: 8px 0;
+              margin: 10px;
+              .RegularGoor,.CapitalGate,.Subtotal {
+                  font-size: 18px;
+                  padding: 0 12px;
+              }
+              .RegularGoor:after,.CapitalGate:after,.Subtotal:after {
+                  content: '';
               }
           }
       }
