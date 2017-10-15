@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="user in users" @click="edit_user(user._id)" title="編輯帳號">
+        <tr class="" v-for="user in users" @click="edit_user(user._id)" title="編輯帳號">
           <td class="icon-checkmark3">{{user._id}}</td>
           <td>{{user.name}}</td>
           <td>{{user.email}}</td>
@@ -39,7 +39,11 @@
 <script>
 import axios from '~/plugins/axios'
 export default {
-
+  created () {
+    this.$store.dispatch('setIsTitle', {
+      is_title: "各縣市使用者帳號管理"
+    })
+  },
   async asyncData ({ params, error }) {
     try {
       let users = await axios.get('/api/users')
@@ -97,14 +101,20 @@ export default {
       tr{
         background-color: #FFF;
         cursor: pointer;
+        /*&:nth-child(odd){*/
+          /*background-color: #FFF;*/
+        /*}*/
+        /*&:nth-child(even){*/
+          /*background-color: #F9F9F9;*/
+        /*}*/
         &:hover{
           background-color: #E2F2F9;
         }
         th,td{
-          padding: 3px 6px;
+          padding: 6px 6px;
           height: 33px;
           vertical-align:middle;
-          color: #0070D2;
+          color: #3E99D2;
         }
         th{}
         td{
@@ -112,8 +122,17 @@ export default {
             font-size: 26px;
             color: #7ED321;
           }
-          &.icon-checkmark3.off:before{
+          &:nth-child(1n+6){
+            color: #B3BBC4;
+          }
+        }
+        &.off{
+          background-color: #E6E6E6;
+          .icon-checkmark3:before{
             color: #BFCDE4;
+          }
+          th,td{
+            color: #B3BBC4;
           }
         }
       }

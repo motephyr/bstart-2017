@@ -51,12 +51,32 @@ html, body {
 a, a:hover, a:focus, a:visited {
   text-decoration: none;
 }
+.page-leave-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 58px;
+}
 .page-enter-active, .page-leave-active {
-  transition: all .2s;
+  transition: opacity .3s;
 }
 .page-enter, .page-leave-active {
   opacity: 0;
-  transform: translateX(6px);
+  //transform: translateX(-12px);
+}
+.nuxt-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px !important;
+  width: 0;
+  -webkit-transition: width .9s,opacity .4s;
+  transition: width .9s,opacity .4s;
+  opacity: 1;
+  background-color: #efc14e !important;
+  z-index: 999999;
 }
 
 .nuxtMainPanel{
@@ -79,7 +99,7 @@ a, a:hover, a:focus, a:visited {
   text-align: center;
   background-color: #F4F6FD;
   border-top: 1px solid #D9E3E5;
-  transition: all 0.5s;
+  //transition: all 0s;
   .ftBt{
     i:before,i:after{
       vertical-align: middle;
@@ -89,7 +109,6 @@ a, a:hover, a:focus, a:visited {
     i:before{}
     i:after{}
     position: relative;
-    //background-color: #1E8F8B;
     background-color: #FFF;
     border: 1px solid rgba(156, 182, 213, 0.6);
     color: rgb(156, 182, 213);
@@ -102,6 +121,7 @@ a, a:hover, a:focus, a:visited {
     text-align: center;
     display: inline-block;
     cursor: pointer;
+    transition: all 0.3s;
     &:hover{
       color: rgb(30, 143, 139);
       border: 1px solid rgba(30, 143, 139, 0.6);

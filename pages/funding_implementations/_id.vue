@@ -2,14 +2,45 @@
   <div>
     <div class="nuxtMainPanel">
     <div class="pd20">
-      <div class="fIHeader">
+      <div class="">
+      <div class="fIHeader row">
         <div class="col-6 col-sm-3 col-md-3 col-lg-3 RegularGoor"><br>345,678</div>
         <div class="col-6 col-sm-3 col-md-3 col-lg-3 CapitalGate"><br>345,678</div>
         <div class="col-6 col-sm-3 col-md-3 col-lg-3 Subtotal"><br>345,678</div>
       </div>
+      </div>
+      <div class="row">
+        <div class="addTabName">
+          <el-input></el-input>
+          <div class="ftBt"><i class="icon-loupe"></i> 新增項目</div></div>
+      </div>
         <el-tabs v-model="activeName" type="border-card" @tab-click="handleClick">
+          <el-tab-pane name="center">
+            <span slot="label">總表</span>
+            <table class="gTable">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>經常門</th>
+                  <th>資本門</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </el-tab-pane>
           <el-tab-pane name="first">
             <span slot="label">多元閱讀</span>
+            <el-tooltip class="item" effect="dark" content="刪除該經費項目" placement="left">
+              <div @click="openTabName" class="dlThisYear icon-cancel"></div>
+            </el-tooltip>
             <div v-for="struct in structs" :key="struct.sub_field">
               <table class="gTable">
                 <colgroup>
@@ -46,20 +77,17 @@
               </table>
               <button @click="update_data(struct.sub_field)">Update</button>
             </div>
-
-            <nuxt-link to="/">Back to the home page</nuxt-link>
+            <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
           </el-tab-pane>
           <el-tab-pane name="second">
             <span slot="label">本土語言</span>
           </el-tab-pane>
         </el-tabs>
-      <h1>funding_implementations</h1>
-      <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
     </div>
     </div>
     <div id="footerBar">
-      <nuxt-link class="ftBt" to="/"><i class="icon-chevron-thin-left"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()"><i class="icon-assignment"></i> 新增年度計畫</div>
+      <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>
+      <div class="ftBt" @click="addYear()"><i class="icon-assignment"></i> 儲存</div>
     </div>
   </div>
 </template>
@@ -106,9 +134,29 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    openTabName() {
+      this.$confirm('此操作將永久刪除[ＸＸＸ]刪除該經費項目資料 , 是否繼續?', '提示', {
+        confirmButtonText: '確定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '刪除成功!'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消刪除,資料尚在'
+        });
+      });
     }
   },
   created () {
+    this.$store.dispatch('setIsTitle', {
+      is_title: "經費執行情形"
+    })
     this.getData()
   },
   mounted: function () {
@@ -122,11 +170,16 @@ export default {
   h1{
     color: #009558;
   }
+  .el-tabs__content {
+    overflow: auto;
+    position: relative;
+  }
   .fIHeader{
-    padding: 0 0 18px 0;
+    padding: 0 18px 18px 18px;
     .RegularGoor, .CapitalGate, .Subtotal {
       text-align: right;
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: 400;
       color: #4D6373;
       display: inline-block;
       margin: 12px 0;
@@ -139,6 +192,9 @@ export default {
     }
     .Subtotal{
       color: #00C4C4;
+    }
+    .RegularGoor,.CapitalGate,.Subtotal{
+      color: #00364D;
     }
     .RegularGoor:before, .CapitalGate:before, .Subtotal:before {
       font-size: 14px;
@@ -157,10 +213,65 @@ export default {
       content: '總計';
     }
     .RegularGoor:after,.CapitalGate:after,.Subtotal:after {
-      content: '元';
+      content: ' 元';
       font-size: 14px;
       color: #AFBCD1;
     }
+  }
+  .addTabName{
+    margin: 12px auto;
+    position: relative;
+    .el-input{
+      height: 36px;
+      width: auto;
+      display: inline-block;
+      margin-right: 114px;
+    }
+    .ftBt{
+      i:before,i:after{
+        vertical-align: middle;
+        font-size: 24px;
+        padding: 0;
+      }
+      i:before{}
+      i:after{}
+      position: absolute;
+      right: 3px;
+      width: 114px;
+      background-color: rgb(30, 143, 139);
+      border: 1px solid rgb(30, 143, 139);
+      color: rgba(255, 255, 255, 0.69);
+      height: 36px;
+      line-height: 36px;
+      margin: 0 0 0 -5px;
+      padding: 0 8px;
+      border-radius: 0 5px 5px 0;
+      font-size: 15px;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover{
+        color: rgb(30, 143, 139);
+        border: 1px solid rgba(30, 143, 139, 0.6);
+        background-color: #FFF;
+      }
+    }
+  }
+  .dlThisYear{
+    display: block;
+    position: absolute;
+    font-size: 18px;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+    color: rgba(114, 122, 136, 0.79);;
+    &:hover{
+      color: #C12A27;
+    }
+  }
+  .el-message-box{
+    max-width: 280px;
   }
   @media (max-width: 400px) {
     table{
@@ -172,6 +283,9 @@ export default {
           }
         }
       }
+    }
+    .pd20{
+      padding: 0;
     }
   }
 </style>

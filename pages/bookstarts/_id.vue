@@ -215,6 +215,9 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch('setIsTitle', {
+      is_title: "嬰幼兒閱讀活動統計"
+    })
     this.getData()
   }
 }

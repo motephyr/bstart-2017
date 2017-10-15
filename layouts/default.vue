@@ -3,7 +3,7 @@
     <div id="leftSide" v-bind:class="{ open: $store.state.isActive }">
       <div class="leftSideHead">
         <nuxt-link class="toindex" to="/" >閱讀推廣與館藏充實</nuxt-link>
-        <div class="icon-cancel-circle" @click="menuBtCancel"></div>
+        <div class="icon-cancel" @click="menuBtCancel"></div>
       </div>
       <div id="leftSideList">
         <left-side/>
@@ -13,7 +13,7 @@
     <div id="rightSide">
       <div class="rightHead">
         <div id="menuBt" @click="menuBt"><i class="icon-list-menu"></i></div>
-        <div class="pagetitle">{{ $store.state.place }}</div>
+        <div class="pagetitle">{{ $store.state.isTitle }}</div>
         <a class="logoW" href="https://www.ntl.edu.tw/" target="_blank">
           <img class="logoW-A" src="/img/logo-w.svg" alt="">
           <img class="logoW-B" src="/img/logo-img.svg" alt="">
@@ -37,14 +37,6 @@ import LeftSide from '~/components/LeftSide.vue'
 import MyFooter from '~/components/Footer.vue'
 
 export default {
-  asyncData (context) {
-    // called every time before loading the component
-    return { pagetitle: "sadsadsadas asd sad dsf" }
-  },
-  data() {
-    return {
-    }
-  },
   components: {
     HeaderA,LeftSide,MyFooter
   },
@@ -96,7 +88,7 @@ export default {
           color: #5FE4C3;
         }
       }
-      .icon-cancel-circle{
+      .icon-cancel{
         position: absolute;
         top: 20px;
         right: 12px;
@@ -247,7 +239,7 @@ export default {
       background-color: rgba(0,0,0,.7);
       z-index: 8;
     }
-    #leftSide.open .leftSideHead .icon-cancel-circle{
+    #leftSide.open .leftSideHead .icon-cancel{
       display: block;
     }
   }
@@ -275,7 +267,7 @@ export default {
       background-color: rgba(0,0,0,.0);
       z-index: 8;
     }
-    #leftSide.open .leftSideHead .icon-cancel-circle{
+    #leftSide.open .leftSideHead .icon-cancel{
       display: none;
     }
   }

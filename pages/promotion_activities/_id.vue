@@ -144,6 +144,9 @@ export default {
     }
   },
   created () {
+    this.$store.dispatch('setIsTitle', {
+      is_title: "本土語言閱讀活動統計"
+    })
     this.getData()
   }
 }

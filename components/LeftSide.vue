@@ -45,16 +45,21 @@
       <li class="listLi"><nuxt-link class="listbutton" to="/bookstarts" >嬰幼兒閱讀活動統計</nuxt-link></li>
       <li class="listLi"><nuxt-link class="listbutton" to="/reading_activities" >多元閱讀活動統計</nuxt-link></li>
       <li class="listLi"><nuxt-link class="listbutton" to="/promotion_activities" >本土語言閱讀活動統計</nuxt-link></li>
-      <li class="listLi"><nuxt-link class="listbutton" to="/" >活動表件</nuxt-link></li>
-      <li class="listLi"><nuxt-link class="listbutton" to="/" >領取禮袋資料</nuxt-link></li>
-      <li class="listLi"><nuxt-link class="listbutton" to="/" >活動剪影</nuxt-link></li>
-      <li class="listLi active"><nuxt-link class="listbutton" to="/" >下載</nuxt-link></li>
+      <li class="listLi"><nuxt-link class="listbutton" to="/activity/file" >活動表件</nuxt-link></li>
+      <li class="listLi"><nuxt-link class="listbutton" to="/gift_bag/file" >領取禮袋資料</nuxt-link></li>
+      <li class="listLi"><nuxt-link class="listbutton" to="/activity_img/file" >活動剪影</nuxt-link></li>
+      <li class="listLi"><nuxt-link class="listbutton" to="/download/list" >下載</nuxt-link></li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
+  mounted: function () {
+    $(document).ready(function () {
+      // pageUrld = window.location.pathname;
+    });
+  },
   computed: {
     place: {
       get: function () {
@@ -81,9 +86,6 @@ export default {
       })
     }
   },
-  mounted () {
-    console.log($('.mlist').html())
-  },
   data(){
     return {
       optionsYear: [{
@@ -103,35 +105,74 @@ export default {
         label: '110'
       }],
       optionsPlace: [{
+        value: '0',
+        label: '中央'
+      }, {
         value: '1',
-        label: '台北市'
+        label: '基隆市'
       }, {
         value: '2',
-        label: '新北市'
+        label: '台北市'
       }, {
         value: '3',
-        label: '高雄縣'
+        label: '新北市'
       }, {
         value: '4',
-        label: '宜蘭縣'
+        label: '桃園市'
       }, {
         value: '5',
-        label: '北京'
+        label: '新竹市'
       },{
         value: '6',
-        label: '台北'
+        label: '新竹縣'
       }, {
         value: '7',
-        label: '新北'
+        label: '苗栗縣'
       }, {
         value: '8',
-        label: '高雄'
+        label: '台中市'
       }, {
         value: '9',
-        label: '宜蘭'
+        label: '南投縣市'
       }, {
         value: '10',
-        label: '北京h'
+        label: '彰化縣市'
+      }, {
+        value: '11',
+        label: '雲林縣市'
+      }, {
+        value: '12',
+        label: '嘉義市'
+      }, {
+        value: '13',
+        label: '嘉義縣'
+      }, {
+        value: '14',
+        label: '台南市'
+      }, {
+        value: '15',
+        label: '高雄市'
+      },{
+        value: '16',
+        label: '屏東縣市'
+      }, {
+        value: '17',
+        label: '台東縣市'
+      }, {
+        value: '18',
+        label: '花蓮縣市'
+      }, {
+        value: '19',
+        label: '宜蘭縣市'
+      }, {
+        value: '20',
+        label: '澎湖縣'
+      }, {
+        value: '21',
+        label: '金門縣'
+      }, {
+        value: '22',
+        label: '連江縣'
       }],
       valueYear: '1',
       valuePlace: '1'
@@ -167,8 +208,14 @@ export default {
         text-align: center;
         margin: 6px 0 12px 0;
         .el-select{
-          width: 75%;
+          width: 105px;
         }
+      }
+      .year{
+        padding-left: 20px;
+      }
+      .place{
+        padding-right: 12px;
       }
       .year:before,.place:before{
         display: block;
@@ -177,7 +224,7 @@ export default {
         color: #AAC1B8;
       }
       .year:before{
-        content: "年份";
+        content: "年度";
       }
       .place:before{
         content: "地方";
@@ -219,6 +266,10 @@ export default {
           .listbutton{
             /*color: #fff;*/
           }
+        }
+        .nuxt-link-exact-active{}
+        .nuxt-link-active{
+          background: url("/img/listHover.svg") 0 6px no-repeat;
         }
       }
     }

@@ -27,6 +27,9 @@ export const mutations = {
   },
   SET_IS_ACTIVE: function (state, isActive) {
     state.isActive = isActive
+  },
+  SET_IS_TITLE: function (state, isTitle) {
+    state.isTitle = isTitle
   }
 }
 
@@ -84,5 +87,8 @@ export const actions = {
   },
   setIsActive ({ commit }, { is_active }) {
     commit('SET_IS_ACTIVE', is_active)
+  },
+  setIsTitle ({ commit }, { is_title }) {
+    commit('SET_IS_TITLE', is_title)
   }
 }

@@ -116,6 +116,9 @@ export default {
   },
   created () {
     this.getData()
+    this.$store.dispatch('setIsTitle', {
+      is_title: "多元閱讀活動統計"
+    })
   }
 }
 </script>

@@ -56,6 +56,11 @@ var tableColumns = [
 ]
 
 export default {
+  created () {
+    this.$store.dispatch('setIsTitle', {
+      is_title: "帳號設定"
+    })
+  },
   name: 'users',
   components: {
     VueForm

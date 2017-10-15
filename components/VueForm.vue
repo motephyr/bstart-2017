@@ -13,14 +13,14 @@
       <form action="#" @submit.prevent="AddNewUser" method="POST">
         <div class="form-group" v-for="field in fields">
           <div v-if="mode == 'show'" >
-            <label :for="field.name">{{field.title || field.name}}:</label>
+            <label :for="field.name">{{field.title || field.name}}</label>
             <el-input v-if="field.type == 'integer'" v-model="newObj[field.name]" type="number" :id="field.name" :name="field.name" disabled="true" ></el-input>
             <el-input v-if="field.type == 'boolean'" v-model="newObj[field.name]" type="checkbox" :id="field.name" disabled="true" ></el-input>
             <el-input v-if="!(field.type == 'integer' || field.type == 'boolean')" v-model="newObj[field.name]" type="text" :id="field.name" :name="field.name" disabled="true" ></el-input>
           </div>
           <div v-else>
             <div v-if="!(field.name === 'id' || field.name === 'created_at' || field.name === 'updated_at')">
-              <label :for="field.name">{{field.title || field.name}}:</label>
+              <label :for="field.name">{{field.title || field.name}}</label>
               <el-input v-if="field.type == 'integer'" v-model="newObj[field.name]" type="number" :id="field.name" :name="field.name" ></el-input>
               <el-input v-if="field.type == 'boolean'" v-model="newObj[field.name]" type="checkbox" :id="field.name" ></el-input>
               <el-input v-if="!(field.type == 'integer' || field.type == 'boolean' )" v-model="newObj[field.name]" type="text" :id="field.name" :name="field.name" ></el-input>
@@ -288,7 +288,6 @@ export default {
       })
     }
   },
-
   created: function () {
     this.fetchUser()
     if (this.fields !== undefined) {
