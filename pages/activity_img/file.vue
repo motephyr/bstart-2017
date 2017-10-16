@@ -2,16 +2,24 @@
     <div>
         <div class="nuxtMainPanel">
             <div class="pd20">
-                <div class="containerCenter">
-                    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
-                    <div style="margin: 15px 0;"></div>
-                    <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
-                        <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
-                    </el-checkbox-group>
+                <div class="row">
+                    <div class="addTabName">
+                        <el-input></el-input>
+                        <div class="ftBt"><i class="icon-loupe"></i> 新增項目</div>
+                    </div>
                 </div>
-                <!--<div :value="p.id" v-for="p in years">{{p}}</div>-->
-                <!--<button @click="addYear()">addYear</button>-->
-                <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
+                <el-tabs type="border-card">
+                    <el-tab-pane label="嬰幼兒">
+                        <!--<el-tooltip class="item" effect="dark" content="刪除「嬰幼兒」活動項目" placement="left">-->
+                            <!--<div @click="openTabActives" class="dlThisYear icon-cancel"></div>-->
+                        <!--</el-tooltip>-->
+                    嬰幼兒
+                    </el-tab-pane>
+                    <el-tab-pane label="青少年">青少年</el-tab-pane>
+                    <el-tab-pane label="樂齡">樂齡</el-tab-pane>
+                    <el-tab-pane label="多元文化">多元文化</el-tab-pane>
+                    <el-tab-pane label="原住民">原住民</el-tab-pane>
+                </el-tabs>
             </div>
         </div>
         <div id="footerBar">
@@ -21,101 +29,74 @@
 </template>
 
 <script>
-  const cityOptions = [
-    '經費執行情形',
-    '嬰幼兒閱讀活動統計',
-    '多元閱讀活動統計',
-    '本土語言閱讀活動統計',
-    '活動表件',
-    '領取禮袋資料',
-    '活動剪影'
-  ];
-  export default {
-    data() {
-      return {
-        checkAll: false,
-        checkedCities: [
-          '經費執行情形',
-          '嬰幼兒閱讀活動統計',
-          '多元閱讀活動統計',
-          '本土語言閱讀活動統計',
-          '活動表件',
-          '領取禮袋資料'
-        ],
-        cities: cityOptions,
-        isIndeterminate: true
-      };
-    },
-    methods: {
-      handleCheckAllChange(event) {
-        this.checkedCities = event.target.checked ? cityOptions : [];
-        this.isIndeterminate = false;
-      },
-      handleCheckedCitiesChange(value) {
-        let checkedCount = value.length;
-        this.checkAll = checkedCount === this.cities.length;
-        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-      }
-    },
-    created () {
-      this.$store.dispatch('setIsTitle', {
-        is_title: "檔案下載"
-      })
-    }
+export default {
+  data() {
+    return {
+    };
+  },
+  created () {
+    this.$store.dispatch('setIsTitle', {
+      is_title: "活動剪影"
+    })
   }
+}
 </script>
 
 <style>
-    .containerCenter{
-        max-width: 280px;
-        margin: 0 auto;
-        .el-checkbox{
-            height: 50px;
-            display: block;
-            margin: 0;
-            .el-checkbox__label{
-                font-size: 18px;
-            }
-        }
-        .el-checkbox{
-            color: #326EAB;
-        }
-        .el-checkbox__inner {
-            margin: 12px;
-            border-radius: 4px;
-            width: 28px;
-            height: 28px;
-            background-color: rgb(213, 222, 233);
-            border-color: rgb(213, 222, 233);
-        }
-        .el-checkbox__input.is-checked .el-checkbox__inner{
-            background-color: rgb(19, 206, 102);
-            border-color: rgb(19, 206, 102);
-        }
-        .el-checkbox__inner:after {
-            -webkit-box-sizing: content-box;
-            box-sizing: content-box;
-            content: "";
-            border: 3px solid #fff;
-            border-left: 0;
-            border-top: 0;
-            height: 16px;
-            left: 9px;
-            position: absolute;
-            top: 1px;
-            -webkit-transform: rotate(45deg) scaleY(0);
-            transform: rotate(45deg) scaleY(0);
-            width: 5px;
-            -webkit-transition: -webkit-transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
-            transition: -webkit-transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
-            transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
-            transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s,-webkit-transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
-            -webkit-transform-origin: center;
-            transform-origin: center;
-        }
-        .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-            background-color: rgb(19, 206, 102);
-            border-color: rgb(19, 206, 102);
-        }
+  .containerCenter{
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .addTabName {
+    margin: 12px auto;
+    position: relative;
+    .el-input {
+      height: 36px;
+      width: auto;
+      display: inline-block;
+      margin-right: 114px;
     }
+    .ftBt {
+      i:before, i:after {
+        vertical-align: middle;
+        font-size: 24px;
+        padding: 0;
+      }
+      i:before { }
+      i:after { }
+      position: absolute;
+      right: 3px;
+      width: 114px;
+      background-color: rgb(30, 143, 139);
+      border: 1px solid rgb(30, 143, 139);
+      color: rgba(255, 255, 255, 0.69);
+      height: 36px;
+      line-height: 36px;
+      margin: 0 0 0 -5px;
+      padding: 0 8px;
+      border-radius: 0 5px 5px 0;
+      font-size: 15px;
+      text-align: center;
+      display: inline-block;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        color: rgb(30, 143, 139);
+        border: 1px solid rgba(30, 143, 139, 0.6);
+        background-color: #FFF;
+      }
+    }
+  }
+  .dlThisYear{
+    display: block;
+    position: absolute;
+    font-size: 18px;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+    color: rgba(114, 122, 136, 0.79);;
+    &:hover{
+      color: #C12A27;
+    }
+  }
 </style>

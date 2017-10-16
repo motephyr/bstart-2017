@@ -177,7 +177,8 @@ export default {
         line-height: 58px;
         text-align: center;
         color: #fff;
-        font-size: 1.1em;
+        font-size: 1.2em;
+        font-weight: 300;
         transition: all 0.5s;
         cursor: default;
         overflow: hidden;

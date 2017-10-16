@@ -2,13 +2,23 @@
   <div>
     <div class="nuxtMainPanel">
       <div class="pd20">
-        <h1>bookstart</h1>
-        <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
+        <div class="container">
+          <div class="row">
+            <h2>館員、閱讀志工及幼托相關培訓課程</h2>
 
+            <div v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}</div>
+            <div v-for="(x, ix) in bookstarts_1.xaxio" :key="x.id">
+              <div>{{x.value}}</div>
+              <div v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">
+                <div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]">
+                  <el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
         <table class="gTable">
-          <!--<colgroup>-->
-            <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
           <thead>
           <tr>
             <th></th>

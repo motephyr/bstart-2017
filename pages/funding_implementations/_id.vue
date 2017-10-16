@@ -14,35 +14,21 @@
           <el-input></el-input>
           <div class="ftBt"><i class="icon-loupe"></i> 新增項目</div></div>
       </div>
-        <el-tabs v-model="activeName" type="border-card" @tab-click="handleClick">
-          <el-tab-pane name="center">
-            <span slot="label">總表</span>
-            <table class="gTable">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>經常門</th>
-                  <th>資本門</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+        <el-tabs type="border-card" @tab-click="handleClick">
+          <el-tab-pane label="總表">
+            <el-table :data="tableData3" border style="width: 100%" height="400">
+              <el-table-column fixed prop="local" label="縣市" width="100"></el-table-column>
+              <el-table-column prop="RegularGoor" label="經常門" width="120"></el-table-column>
+              <el-table-column prop="CapitalGate" label="資本門" width="120"></el-table-column>
+              <el-table-column prop="Subtotal" label="小計" width="120"></el-table-column>
+            </el-table>
           </el-tab-pane>
-          <el-tab-pane name="first">
-            <span slot="label">多元閱讀</span>
+          <el-tab-pane label="多元閱讀">
             <el-tooltip class="item" effect="dark" content="刪除該經費項目" placement="left">
               <div @click="openTabName" class="dlThisYear icon-cancel"></div>
             </el-tooltip>
             <div v-for="struct in structs" :key="struct.sub_field">
-              <table class="gTable">
+              <table class="gTablefunding">
                 <colgroup>
                   <col>
                   <col>
@@ -63,7 +49,7 @@
                     <div v-if="struct.value.length > ix && struct.value[ix]">
                       <!--<input type="text" v-model="struct.value[ix][iy]" />-->
                       <!--<el-input :disabled="true" v-model="struct.value[ix][iy]" placeholder=""></el-input>-->
-                      <el-input v-model="struct.value[ix][iy]" placeholder=""></el-input>
+                      <el-input type="number" v-model="struct.value[ix][iy]" placeholder=""></el-input>
                     </div>
                   </td>
                   <td></td>
@@ -79,15 +65,14 @@
             </div>
             <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
           </el-tab-pane>
-          <el-tab-pane name="second">
-            <span slot="label">本土語言</span>
+          <el-tab-pane label="本土語言">
           </el-tab-pane>
         </el-tabs>
     </div>
     </div>
     <div id="footerBar">
       <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>
-      <div class="ftBt" @click="addYear()"><i class="icon-assignment"></i> 儲存</div>
+      <div class="ftBt"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
   </div>
 </template>
@@ -98,9 +83,32 @@ import _ from 'lodash'
 export default {
   data () {
     return {
-      activeName: 'first',
       structs: [],
-      vuexData: this.$store.state
+      vuexData: this.$store.state,
+      tableData3: [
+        {local: '基隆市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '台北市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '新北市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '桃園市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '新竹市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '新竹縣',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '苗栗縣',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '台中市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '南投縣市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '彰化縣市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '雲林縣市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '嘉義市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '嘉義縣',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '台南市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '高雄市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '屏東縣市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '台東縣市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '花蓮縣市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '宜蘭縣市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '澎湖縣',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '金門縣',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
+        {local: '連江縣',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'}
+      ]
     }
   },
   watch: {
@@ -136,7 +144,7 @@ export default {
       }
     },
     openTabName() {
-      this.$confirm('此操作將永久刪除[ＸＸＸ]刪除該經費項目資料 , 是否繼續?', '提示', {
+      this.$confirm('此操作將永久刪除[ＸＸＸ]該經費項目資料 , 是否繼續?', '提示', {
         confirmButtonText: '確定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -268,6 +276,35 @@ export default {
     color: rgba(114, 122, 136, 0.79);;
     &:hover{
       color: #C12A27;
+    }
+  }
+  table.gTablefunding{
+    colgroup{
+      col:hover{
+        background-color: #F4F6FD;
+      }
+    }
+    thead{}
+    tbody{
+      tr{
+        &:hover{
+        }
+        td{}
+      }
+    }
+    tr{
+      td,th{
+        color: #9BB6D7;
+        padding: 9px 3px;
+        text-align: right;
+        .el-input{
+          .el-input__inner{
+            text-align: right;
+            font-size: 18px;
+            color: #1E8F8B;
+          }
+        }
+      }
     }
   }
   .el-message-box{

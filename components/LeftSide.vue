@@ -209,10 +209,19 @@ export default {
         margin: 6px 0 12px 0;
         .el-select{
           width: 105px;
+          .el-input__inner{
+            color: #1E8F8B;
+            text-align: center;
+          }
         }
       }
       .year{
         padding-left: 20px;
+        .el-select {
+          .el-input__inner {
+            /*font-size: 1.2em;*/
+          }
+        }
       }
       .place{
         padding-right: 12px;
@@ -239,9 +248,10 @@ export default {
         transition: all 0.2s;
         background: url("/img/listHover.svg") -6px 6px no-repeat;
         .listbutton {
-          font-size: 18px;
+          font-size: 1.15em;
+          font-weight: 300;
           display: block;
-          padding: 0 30px;
+          padding: 0 10px 0 30px;
           height: 100%;
           line-height: 60px;
           color: #129895;

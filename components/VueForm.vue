@@ -39,8 +39,6 @@
           <el-button :disabled="!isValid" class="button" type="submit" v-if="mode == 'new'">Add New {{model}}</el-button>
           <el-button :disabled="!isValid" class="button" type="submit" v-if="mode == 'edit'" @click="UpdateUser(newObj.id)">Edit {{model}}</el-button>
         </div>
-        <label for="aSwitch">帳號使用</label>
-        <el-switch id="aSwitch" v-model="accountSwitch" on-color="#7ed321" off-color="#ff4949"></el-switch>
       </form>
       <el-button class="button" @click="setMode('index')">返回</el-button>
     </div>
@@ -169,8 +167,7 @@ export default {
       }, {
         value: '22',
         label: '連江縣'
-      }],
-      accountSwitch: true
+      }]
     }
   },
   methods: {
