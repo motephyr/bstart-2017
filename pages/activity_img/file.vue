@@ -2,23 +2,34 @@
     <div>
         <div class="nuxtMainPanel">
             <div class="pd20">
-                <div class="row">
-                    <div class="addTabName">
-                        <el-input></el-input>
-                        <div class="ftBt"><i class="icon-loupe"></i> 新增項目</div>
-                    </div>
-                </div>
+                <!--<div class="row">-->
+                    <!--<div class="addTabName">-->
+                        <!--<el-input></el-input>-->
+                        <!--<div class="ftBt"><i class="icon-loupe"></i> 新增項目</div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <el-tabs type="border-card">
-                    <el-tab-pane label="嬰幼兒">
+                    <el-tab-pane label="嬰幼兒活動">
                         <!--<el-tooltip class="item" effect="dark" content="刪除「嬰幼兒」活動項目" placement="left">-->
                             <!--<div @click="openTabActives" class="dlThisYear icon-cancel"></div>-->
                         <!--</el-tooltip>-->
-                    嬰幼兒
+                        <el-upload
+                                action="https://jsonplaceholder.typicode.com/posts/"
+                                list-type="picture-card"
+                                :on-preview="handlePictureCardPreview"
+                                :on-remove="handleRemove">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                        <el-dialog v-model="dialogVisible" size="tiny">
+                            <img width="100%" :src="dialogImageUrl" alt="">
+                            <el-input type="text"></el-input>
+                        </el-dialog>
                     </el-tab-pane>
-                    <el-tab-pane label="青少年">青少年</el-tab-pane>
-                    <el-tab-pane label="樂齡">樂齡</el-tab-pane>
-                    <el-tab-pane label="多元文化">多元文化</el-tab-pane>
-                    <el-tab-pane label="原住民">原住民</el-tab-pane>
+                    <el-tab-pane label="青少年活動">青少年活動</el-tab-pane>
+                    <el-tab-pane label="樂齡活動">樂齡活動</el-tab-pane>
+                    <el-tab-pane label="多元文化活動">多元文化活動</el-tab-pane>
+                    <el-tab-pane label="原住民活動">原住民活動</el-tab-pane>
+                    <el-tab-pane label="其他活動">其他活動</el-tab-pane>
                 </el-tabs>
             </div>
         </div>
@@ -32,7 +43,35 @@
 export default {
   data() {
     return {
+      dialogImageUrl: '',
+      dialogVisible: false
     };
+  },
+  methods: {
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    },
+    openTabActives() {
+      this.$confirm('此操作將永久刪除[嬰幼兒活動剪影] , 是否繼續?', '提示', {
+        confirmButtonText: '確定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '刪除成功!'
+        });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消刪除,資料尚在'
+        });
+      });
+    }
   },
   created () {
     this.$store.dispatch('setIsTitle', {
@@ -97,6 +136,11 @@ export default {
     color: rgba(114, 122, 136, 0.79);;
     &:hover{
       color: #C12A27;
+    }
+  }
+  @media (max-width: 400px){
+    .pd20{
+      padding: 20px 0;
     }
   }
 </style>
