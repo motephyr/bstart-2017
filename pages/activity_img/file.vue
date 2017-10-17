@@ -14,15 +14,16 @@
                             <!--<div @click="openTabActives" class="dlThisYear icon-cancel"></div>-->
                         <!--</el-tooltip>-->
                         <el-upload
-                                action="https://jsonplaceholder.typicode.com/posts/"
+                                name="logos"
+                                action="../../upload"
                                 list-type="picture-card"
                                 :on-preview="handlePictureCardPreview"
                                 :on-remove="handleRemove">
                             <i class="el-icon-plus"></i>
                         </el-upload>
-                        <el-dialog v-model="dialogVisible" size="tiny">
+                        <el-dialog v-model="dialogVisible" size="tiny" class="slidBox">
                             <img width="100%" :src="dialogImageUrl" alt="">
-                            <el-input type="text"></el-input>
+                            <el-input type="text" v-model="dialogImageUrl"></el-input>
                         </el-dialog>
                     </el-tab-pane>
                     <el-tab-pane label="青少年活動">青少年活動</el-tab-pane>
@@ -43,7 +44,7 @@
 export default {
   data() {
     return {
-      dialogImageUrl: '',
+      dialogImageUrl: 'rrrrrr',
       dialogVisible: false
     };
   },

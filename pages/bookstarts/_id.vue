@@ -18,7 +18,7 @@
 
           </div>
         </div>
-        <table class="gTable noEl">
+        <table class="gTable noEl w100">
           <thead>
           <tr>
             <th></th>
@@ -36,7 +36,7 @@
           </tr>
           </tbody>
         </table>
-        <table class="gTable noEl">
+        <table class="gTable noEl w100">
           <thead>
           <tr>
             <th></th>
@@ -54,7 +54,7 @@
           </tr>
           </tbody>
         </table>
-        <table class="gTable noEl">
+        <table class="gTable noEl w100">
           <thead>
           <tr>
             <th></th>
@@ -72,7 +72,7 @@
           </tr>
           </tbody>
         </table>
-        <table class="gTable noEl">
+        <table class="gTable noEl w100">
           <thead>
           <tr>
             <th></th>
@@ -90,7 +90,7 @@
           </tr>
           </tbody>
         </table>
-        <table class="gTable noEl">
+        <table class="gTable noEl w100">
           <thead>
           <tr>
             <th></th>
@@ -108,7 +108,7 @@
           </tr>
           </tbody>
         </table>
-        <table class="gTable noEl">
+        <table class="gTable noEl w100">
           <thead>
           <tr>
             <th></th>

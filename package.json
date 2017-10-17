@@ -33,6 +33,7 @@
     "lockit-utils": "http://github.com/makeandship/lockit-utilities.git#feature/extended_user",
     "lodash": "^4.17.4",
     "method-override": "^2.3.9",
+    "multer": "^1.3.0",
     "nodemailer-stub-transport": "^1.1.0",
     "nuxt": "^1.0.0-rc3",
     "postcss-hexrgba": "^1.0.0",

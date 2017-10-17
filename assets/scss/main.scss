@@ -262,11 +262,16 @@ table.gTable{
   }
 }
 .noEl{
+  &.w100{
+    input{
+      width: 110px;
+    }
+  }
   input{
+    width: 130px;
     text-align: right;
     font-size: 18px;
     color: #1e8f8b;
-    width: 100px;
     appearance: none;
     background-color: #fff;
     background-image: none;

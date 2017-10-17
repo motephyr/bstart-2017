@@ -42,7 +42,7 @@ export default {
   //},
   data() {
     return {
-      pagetitle: "sadsad",
+//      pagetitle: "sadsad",
       pickerOptions0: {
         disabledDate(time) {
           return time.getTime() < Date.now() - 8.64e7;

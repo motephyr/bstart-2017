@@ -28,12 +28,7 @@
               <div @click="openTabName" class="dlThisYear icon-cancel"></div>
             </el-tooltip>
             <div>
-              <table class="gTablefunding">
-                <colgroup>
-                  <col>
-                  <col>
-                  <col>
-                </colgroup>
+              <table class="gTablefunding noEl">
                 <thead>
                 <tr>
                   <th></th>
@@ -49,7 +44,7 @@
                     <div v-if="struct.value.length > ix && struct.value[ix]">
                       <!--<input type="text" v-model="struct.value[ix][iy]" />-->
                       <!--<el-input :disabled="true" v-model="struct.value[ix][iy]" placeholder=""></el-input>-->
-                      <el-input type="number" v-model="struct.value[ix][iy]" placeholder=""></el-input>
+                      <input type="text" v-model="struct.value[ix][iy]" @keyup="inputChange"/>
                     </div>
                   </td>
                   <td></td>
@@ -61,7 +56,7 @@
                   <td></td>
                 </tfoot>
               </table>
-              <button @click="update_data(struct.sub_field)">Update</button>
+              <!--<button @click="update_data(struct.sub_field)">Update</button>-->
             </div>
             <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
           </el-tab-pane>
@@ -70,8 +65,9 @@
     </div>
     </div>
     <div id="footerBar">
-      <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>
-      <div class="ftBt" @click="update_data()"><i class="icon-checkmark5"></i> 儲存</div>
+      <!--<button @click="update_data(struct.sub_field)">Update</button>-->
+      <!--<div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>-->
+      <div class="ftBt"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
   </div>
 </template>
@@ -119,10 +115,13 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab, event);
+//      console.log(tab, event);
     },
-    async update_data (name) {
-//      var struct = _(this.structs).filter((x) => {return x.sub_field === name}).value()[0]
+    inputChange(e) {
+      e.target.value = e.target.value.replace(/[^\d]/g, '')
+    },
+    update_data (name) {
+      var struct = _(this.structs).filter((x) => {return x.sub_field === name}).value()[0]
       var changeValue = _(struct.xaxio).map((x, i) => {
         x.table_values = struct.value[i]
         return x
@@ -130,17 +129,17 @@ export default {
       axios.post('/api/table_values/updateSubField/' + 'funding_implementations', {change_value: changeValue, yearPlaceId: this.$store.state.yearPlaceId, subField: name}).then((res) => {
         //this.$router.replace('/funding_implementations?' + Math.random())
       }).catch((e) => {
-        console.log(e)
+//        console.log(e)
       })
     },
     async getData () {
       try {
-        // let readingActivitiesEdit = await axios.get('/api/table_fields/' + 'funding_implementations' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId +'&action=edit')
+//        let readingActivitiesEdit = await axios.get('/api/table_fields/' + 'funding_implementations' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId +'&action=edit')
         let res = await axios.post('/api/table_fields/getSubField/' + 'funding_implementations', {year: this.$store.state.year, yearPlaceId: this.$store.state.yearPlaceId})
         this.structs = res.data
-        console.log(this.structs)
+//        console.log(this.structs)
       } catch (e) {
-        console.log(e)
+//        console.log(e)
       }
     },
     openTabName() {
