@@ -14,7 +14,7 @@
                 <div class="col-6 col-sm-5 col-md-4 col-lg-2 CapitalGate">345,345,678</div>
                 <div class="col-6 col-sm-5 col-md-4 col-lg-2 Subtotal">3,945,345,678</div>
                 <el-tooltip class="item" effect="dark" content="刪除該年度資料" placement="left">
-                    <div @click="openDlThisYear" class="dlThisYear icon-cancel"></div>
+                    <div @click="openDlThisYear(p)" class="dlThisYear icon-cancel"></div>
                 </el-tooltip>
             </li>
         </ul>
@@ -70,16 +70,20 @@ export default {
         console.log(e)
       })
     },
-    openDlThisYear() {
+    openDlThisYear(year) {
       this.$confirm('此操作將永久刪除[106]年度計畫資料 , 是否繼續?', '提示', {
         confirmButtonText: '確定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$message({
-          type: 'success',
-          message: '刪除成功!'
-        });
+        axios.delete('/api/year_places',{params: {year: year}}).then((res) => {
+          this.$message({
+            type: 'success',
+            message: '刪除成功!'
+          });
+        }).catch((e) => {
+          console.log(e)
+        })
       }).catch(() => {
         this.$message({
           type: 'info',

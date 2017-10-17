@@ -10,34 +10,30 @@
       <li class="year">
         <!--<el-tooltip class="item" effect="dark" placement="top">-->
           <!--<div slot="content">選擇年度分類</div>-->
-        <el-select v-model="valueYear" placeholder="年度">
+        <el-select v-model="valueYear" placeholder="年度" @change="getYearPlaceId()">
           <el-option
-                  v-for="item in optionsYear"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value">
+                  v-for="(item, index) in optionsYear"
+                  :key="index"
+                  :label="item"
+                  :value="item">
           </el-option>
         </el-select>
         <!--</el-tooltip>-->
-        <select v-model="$store.state.year" @change="getYearPlaceId()">
-          　<option :value="p" v-for="(p, px) in $store.state.yearPlaces.years">{{p}}</option>
-        </select>
+
       </li>
       <li class="place">
         <!--<el-tooltip class="item" effect="dark" placement="top">-->
           <!--<div slot="content">選擇縣市分類</div>-->
-          <el-select v-model="valuePlace" placeholder="縣市">
+          <el-select v-model="valuePlace" placeholder="縣市" @change="getYearPlaceId()">
             <el-option
-                    v-for="item in optionsPlace"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
+                    v-for="(item, index) in optionsPlace"
+                    :key="index"
+                    :label="item"
+                    :value="item">
             </el-option>
           </el-select>
         <!--</el-tooltip>-->
-        <select v-model="$store.state.place" @change="getYearPlaceId()">
-          　<option :value="p" v-for="(p, px) in $store.state.yearPlaces.places">{{p}}</option>
-        </select>
+
       </li>
     </ul>
     <!--<ul class="mlist" v-if="$store.place == '">-->
@@ -66,122 +62,22 @@ export default {
       // pageUrld = window.location.pathname;
     });
   },
-  computed: {
-    place: {
-      get: function () {
-        return $store.state.place
-      },
-      set: function (val) {
-        this.$store.dispatch('setPlace', val)
-      }
-    },
-    year: {
-      get: function () {
-        return $store.state.year
-      },
-      set: function (val) {
-        this.$store.dispatch('setYear', val)
-      }
-    }
-  },
   methods: {
     getYearPlaceId () {
+      this.$store.dispatch('setYear', {year: this.valueYear})
+      this.$store.dispatch('setPlace', {place: this.valuePlace})
       this.$store.dispatch('getYearPlaceId', {
-        place: this.$store.state.place,
-        year: this.$store.state.year
+        place: this.valuePlace,
+        year: this.valueYear
       })
     }
   },
   data(){
     return {
-      optionsYear: [{
-        value: '1',
-        label: '106'
-      }, {
-        value: '2',
-        label: '107'
-      }, {
-        value: '3',
-        label: '108'
-      }, {
-        value: '4',
-        label: '109'
-      }, {
-        value: '5',
-        label: '110'
-      }],
-      optionsPlace: [{
-        value: '0',
-        label: '中央'
-      }, {
-        value: '1',
-        label: '基隆市'
-      }, {
-        value: '2',
-        label: '台北市'
-      }, {
-        value: '3',
-        label: '新北市'
-      }, {
-        value: '4',
-        label: '桃園市'
-      }, {
-        value: '5',
-        label: '新竹市'
-      },{
-        value: '6',
-        label: '新竹縣'
-      }, {
-        value: '7',
-        label: '苗栗縣'
-      }, {
-        value: '8',
-        label: '台中市'
-      }, {
-        value: '9',
-        label: '南投縣市'
-      }, {
-        value: '10',
-        label: '彰化縣市'
-      }, {
-        value: '11',
-        label: '雲林縣市'
-      }, {
-        value: '12',
-        label: '嘉義市'
-      }, {
-        value: '13',
-        label: '嘉義縣'
-      }, {
-        value: '14',
-        label: '台南市'
-      }, {
-        value: '15',
-        label: '高雄市'
-      },{
-        value: '16',
-        label: '屏東縣市'
-      }, {
-        value: '17',
-        label: '台東縣市'
-      }, {
-        value: '18',
-        label: '花蓮縣市'
-      }, {
-        value: '19',
-        label: '宜蘭縣市'
-      }, {
-        value: '20',
-        label: '澎湖縣'
-      }, {
-        value: '21',
-        label: '金門縣'
-      }, {
-        value: '22',
-        label: '連江縣'
-      }],
-      valueYear: '1',
-      valuePlace: '1'
+      optionsYear: this.$store.state.yearPlaces.years,
+      optionsPlace: this.$store.state.yearPlaces.places,
+      valueYear: this.$store.state.year,
+      valuePlace: this.$store.state.place
     }
   }
   // ,

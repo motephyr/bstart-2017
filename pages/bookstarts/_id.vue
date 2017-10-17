@@ -4,25 +4,25 @@
       <div class="pd20">
         <div class="container">
           <div class="row">
-            <h2>館員、閱讀志工及幼托相關培訓課程</h2>
+            <!--<h2>館員、閱讀志工及幼托相關培訓課程</h2>-->
 
-            <!--<div v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}</div>-->
-            <!--<div v-for="(x, ix) in bookstarts_1.xaxio" :key="x.id">-->
-              <!--<div>{{x.value}}</div>-->
-              <!--<div v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">-->
-                <!--<div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]">-->
-                  <!--<el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
+            <div v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}~</div>
+            <div v-for="(x, ix) in bookstarts_1.xaxio" :key="x.id">
+              <div>{{x.value}}Q</div>
+              <div v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">
+                <div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]">
+                  <el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
-        <table class="gTable">
+        <table class="gTable noEl">
           <thead>
           <tr>
             <th></th>
-            <th v-for="y in bookstarts_1.yaxio" :key="y.id">{{(y.value == '辦理場次') ? 'x' : 'y'}}</th>
+            <th v-for="y in bookstarts_1.yaxio" :key="y.id">{{(y.value == '辦理場次') ? '辦理場次' : '參與人次'}}</th>
           </tr>
           </thead>
           <tbody>
@@ -30,18 +30,13 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">
               <div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]">
-                <el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>
+                <input type="text" v-model="bookstarts_1.value[ix][iy]" @keyup="inputChange"/>
               </div>
             </td>
           </tr>
           </tbody>
         </table>
-        <button @click="update_data('bookstarts_1')">Update</button>
-
-        <table class="gTable">
-          <!--<colgroup>-->
-            <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
+        <table class="gTable noEl">
           <thead>
           <tr>
             <th></th>
@@ -53,18 +48,13 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in bookstarts_2.yaxio" :key="y.id">
               <div v-if="bookstarts_2.value.length > ix && bookstarts_2.value[ix]">
-                <el-input type="text" v-model="bookstarts_2.value[ix][iy]" ></el-input>
+                <input type="text" v-model="bookstarts_2.value[ix][iy]" @keyup="inputChange" disabled/>
               </div>
             </td>
           </tr>
           </tbody>
         </table>
-        <button @click="update_data('bookstarts_2')">Update</button>
-
-        <table class="gTable">
-          <!--<colgroup>-->
-            <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
+        <table class="gTable noEl">
           <thead>
           <tr>
             <th></th>
@@ -76,18 +66,13 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in bookstarts_3.yaxio" :key="y.id">
               <div v-if="bookstarts_3.value.length > ix && bookstarts_3.value[ix]">
-                <el-input type="text" v-model="bookstarts_3.value[ix][iy]" ></el-input>
+                <input type="text" v-model="bookstarts_3.value[ix][iy]" @keyup="inputChange"/>
               </div>
             </td>
           </tr>
           </tbody>
         </table>
-        <button @click="update_data('bookstarts_3')">Update</button>
-
-        <table class="gTable">
-          <!--<colgroup>-->
-            <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
+        <table class="gTable noEl">
           <thead>
           <tr>
             <th></th>
@@ -99,18 +84,13 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in bookstarts_4.yaxio" :key="y.id">
               <div v-if="bookstarts_4.value.length > ix && bookstarts_4.value[ix]">
-                <el-input type="text" v-model="bookstarts_4.value[ix][iy]" ></el-input>
+                <input type="text" v-model="bookstarts_4.value[ix][iy]" @keyup="inputChange"/>
               </div>
             </td>
           </tr>
           </tbody>
         </table>
-        <button @click="update_data('bookstarts_4')">Update</button>
-
-        <table class="gTable">
-          <!--<colgroup>-->
-            <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
+        <table class="gTable noEl">
           <thead>
           <tr>
             <th></th>
@@ -122,18 +102,13 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in bookstarts_5.yaxio" :key="y.id">
               <div v-if="bookstarts_5.value.length > ix && bookstarts_5.value[ix]">
-                <el-input type="text" v-model="bookstarts_5.value[ix][iy]" ></el-input>
+                <input type="text" v-model="bookstarts_5.value[ix][iy]" @keyup="inputChange"/>
               </div>
             </td>
           </tr>
           </tbody>
         </table>
-        <button @click="update_data('bookstarts_5')">Update</button>
-
-        <table class="gTable">
-          <!--<colgroup>-->
-            <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
+        <table class="gTable noEl">
           <thead>
           <tr>
             <th></th>
@@ -145,20 +120,17 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in bookstarts_6.yaxio" :key="y.id">
               <div v-if="bookstarts_6.value.length > ix && bookstarts_6.value[ix]">
-                <el-input type="text" v-model="bookstarts_6.value[ix][iy]" ></el-input>
+                <input type="text" v-model="bookstarts_6.value[ix][iy]" @change="inputChange"/>
               </div>
             </td>
           </tr>
           </tbody>
         </table>
-        <button @click="update_data('bookstarts_6')">Update</button>
-
-        <nuxt-link to="/">Back to the home page</nuxt-link>
       </div>
     </div>
     <div id="footerBar">
-      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+      <!--<div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>-->
+      <div class="ftBt" @click="update_data()">儲存</div>
     </div>
   </div>
 </template>
@@ -190,25 +162,37 @@ export default {
     }
   },
   methods: {
-    async update_data(name) {
+    inputChange(e) {
+      e.target.value = e.target.value.replace(/[^\d]/g, '')
+    },
+    async update_data() {
+      var msg
       var updateArray = ['bookstarts_1', 'bookstarts_2', 'bookstarts_3', 'bookstarts_4', 'bookstarts_5', 'bookstarts_6']
-
-      await function () {
+      var self = this
+      var all = function () {
         for (var i = 0; i < updateArray.length; i++) {
-          var changeValue = _(this[name].xaxio).map((x, i) => {
-            x.table_values = this[name].value[i]
+          var name = updateArray[i]
+          var changeValue = _(self[name].xaxio).map((x, i) => {
+            x.table_values = self[name].value[i]
             return x
           }).value()
-          console.log(changeValue)
+//          console.log(changeValue)
+//          msg = changeValue
           axios.post('/api/table_values/' + name, {
             change_value: changeValue,
-            yearPlaceId: this.$store.state.yearPlaceId
+            yearPlaceId: self.$store.state.yearPlaceId
           }).catch((e) => {
-            console.log(e)
+//            console.log(e)
           })
         }
       }
-      this.$router.replace('/promotion_activities?' + Math.random())
+      await all()
+      this.$notify({
+        title: '已更新',
+        message: msg,
+        type: 'success'
+      });
+//      this.$router.replace('/promotion_activities?' + Math.random())
     },
 
     async getData () {

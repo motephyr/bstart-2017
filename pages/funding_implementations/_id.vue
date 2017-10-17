@@ -23,11 +23,11 @@
               <el-table-column prop="Subtotal" label="小計" width="120"></el-table-column>
             </el-table>
           </el-tab-pane>
-          <el-tab-pane label="多元閱讀">
+          <el-tab-pane :label="struct.sub_field" v-for="struct in structs" :key="struct.sub_field">
             <el-tooltip class="item" effect="dark" content="刪除該經費項目" placement="left">
               <div @click="openTabName" class="dlThisYear icon-cancel"></div>
             </el-tooltip>
-            <div v-for="struct in structs" :key="struct.sub_field">
+            <div>
               <table class="gTablefunding">
                 <colgroup>
                   <col>
@@ -65,14 +65,13 @@
             </div>
             <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
           </el-tab-pane>
-          <el-tab-pane label="本土語言">
-          </el-tab-pane>
+
         </el-tabs>
     </div>
     </div>
     <div id="footerBar">
       <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>
-      <div class="ftBt"><i class="icon-checkmark5"></i> 儲存</div>
+      <div class="ftBt" @click="update_data()"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
   </div>
 </template>
@@ -122,14 +121,14 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event);
     },
-    update_data (name) {
-      var struct = _(this.structs).filter((x) => {return x.sub_field === name}).value()[0]
+    async update_data (name) {
+//      var struct = _(this.structs).filter((x) => {return x.sub_field === name}).value()[0]
       var changeValue = _(struct.xaxio).map((x, i) => {
         x.table_values = struct.value[i]
         return x
       }).value()
       axios.post('/api/table_values/updateSubField/' + 'funding_implementations', {change_value: changeValue, yearPlaceId: this.$store.state.yearPlaceId, subField: name}).then((res) => {
-        this.$router.replace('/funding_implementations?' + Math.random())
+        //this.$router.replace('/funding_implementations?' + Math.random())
       }).catch((e) => {
         console.log(e)
       })
@@ -139,6 +138,7 @@ export default {
         // let readingActivitiesEdit = await axios.get('/api/table_fields/' + 'funding_implementations' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId +'&action=edit')
         let res = await axios.post('/api/table_fields/getSubField/' + 'funding_implementations', {year: this.$store.state.year, yearPlaceId: this.$store.state.yearPlaceId})
         this.structs = res.data
+        console.log(this.structs)
       } catch (e) {
         console.log(e)
       }

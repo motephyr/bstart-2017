@@ -32,7 +32,8 @@ module.exports = {
     'block-spacing': 'off',
     'no-sequences': 'off',
     'quotes': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'indent': 'off'
   },
   globals: {}
 }
