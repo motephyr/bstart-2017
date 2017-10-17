@@ -45,7 +45,7 @@ router.post('/year_places', async function (req, res, next) {
     var year_place = (await YearPlaces.forge().fetch()).toJSON();
     var nowYear = (year_place.length > 0) ? (_(year_place).map((x) => {return x.year}).uniq().max() + 1).toString() : '106'
 
-    var places = ['台北縣', '台北市', '新北市', '桃園縣']
+    var places = ['中央','基隆市','台北市','新北市','桃園市','新竹市','新竹縣','苗栗縣','台中市','南投縣市','彰化縣市','雲林縣市','嘉義市','嘉義縣','台南市','高雄市','屏東縣市','台東縣市','花蓮縣市','宜蘭縣市','澎湖縣','金門縣','連江縣']
     var months = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
     var yearplaces = []
     for(var k=0; k<places.length; k++){

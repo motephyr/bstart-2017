@@ -48,9 +48,9 @@ exports.signup = {
   route: '/signup',
   tokenExpiration: '1 day',
   views: {
-    signup: '',         // input fields 'name', 'email' and 'password' | local variable 'error' | POST /'signup.route'
-    linkExpired: '',    // message link has expired | input field 'email' | POST /'signup.route'/resend-verification
-    verified: '',       // message email is now verified and maybe link to /'login.route'
+    signup: 'lockit/get-signup.jade',         // input fields 'name', 'email' and 'password' | local variable 'error' | POST /'signup.route'
+    linkExpired: 'lockit/link-expired.jade',    // message link has expired | input field 'email' | POST /'signup.route'/resend-verification
+    verified: 'lockit/mail-verification-success.jade',       // message email is now verified and maybe link to /'login.route'
     signedUp: '',       // message email has been sent => check your inbox
     resend: ''          // input field 'email' | local variable 'error' | POST /'signup.route'/resend-verification
   },
@@ -62,8 +62,8 @@ exports.login = {
   route: '/login',
   logoutRoute: '/logout',
   views: {
-    login: '',          // input fields 'login' and 'password' | POST /'login.route' | local variable 'error'
-    loggedOut: ''       // message that user logged out
+    login: 'lockit/get-login.jade',          // input fields 'login' and 'password' | POST /'login.route' | local variable 'error'
+    loggedOut: 'lockit/get-logout.jade'       // message that user logged out
   },
   handleResponse: false  // let lockit handle the response after login/logout success
 };
@@ -73,11 +73,11 @@ exports.forgotPassword = {
   route: '/forgot-password',
   tokenExpiration: '1 day',
   views: {
-    forgotPassword: '', // input field 'email' | POST /'forgotPassword.route' | local variable 'error'
-    newPassword: '',    // input field 'password' | POST /'forgotPassword.route'/#{token} | local variable 'error'
-    changedPassword: '',// message that password has been changed successfully
-    linkExpired: '',    // message that link has expired and maybe link to /'forgotPassword.route'
-    sentEmail: ''       // message that email with token has been sent
+    forgotPassword: 'lockit/get-forgot-password.jade', // input field 'email' | POST /'forgotPassword.route' | local variable 'error'
+    newPassword: 'lockit/get-new-password.jade',    // input field 'password' | POST /'forgotPassword.route'/#{token} | local variable 'error'
+    changedPassword: 'lockit/change-password-success.jade',// message that password has been changed successfully
+    linkExpired: 'lockit/link-expired.jade',    // message that link has expired and maybe link to /'forgotPassword.route'
+    sentEmail: 'lockit/post-forgot-password.jade'       // message that email with token has been sent
   }
 };
 

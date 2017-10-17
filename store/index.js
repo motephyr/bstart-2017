@@ -3,10 +3,11 @@ import axios from '~/plugins/axios'
 export const state = () => ({
   authUser: null,
   year: 106,
-  place: '台北市',
+  place: '中央',
   yearPlaceId: 1,
   yearPlaces: {years: null, places: null},
-  isActive: false
+  isActive: false,
+  isTitle: ''
 })
 
 export const mutations = {

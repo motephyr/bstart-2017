@@ -9,20 +9,26 @@
       <table class="usersTb">
         <thead>
         <tr>
-          <th v-for="(value, key) in users[0]">{{(key != 'created_at' && key != 'updated_at') ? key : ''}}</th>
+          <!--<th v-for="(value, key) in users[0]">{{(key != 'created_at' && key != 'updated_at') ? key : ''}}</th>-->
+          <th width="36"></th>
+          <th>地方</th>
+          <th>帳號</th>
+          <th>姓名</th>
+          <th>EMAIL</th>
+          <th>電話</th>
+          <th>行動</th>
         </tr>
         </thead>
         <tbody>
-        <tr class="" v-for="user in users" @click="edit_user(user._id)" title="編輯帳號">
+        <tr class="" v-for="user in users" @click="edit_user(user._id)" title="編輯帳號" :class="{ off: user.accountLocked }">
           <td class="icon-checkmark3">{{user._id}}</td>
+          <td>{{user.area}}</td>
+          <td>{{user.account}}</td>
           <td>{{user.name}}</td>
           <td>{{user.email}}</td>
-          <td>{{user.accountLocked}}</td>
-          <td>{{user.account}}</td>
           <td>{{user.phone}}</td>
           <td>{{user.mobile}}</td>
-          <td>{{user.area}}</td>
-          <!--<td><button>編輯</button></td>-->
+          <!--<td>{{user.accountLocked}}</td>-->
         </tr>
         </tbody>
       </table>
@@ -68,6 +74,13 @@ export default {
     edit_user (id) {
       this.$router.replace('/users/edit/'+ id +'?' + Math.random())
     }
+  },
+  mounted () {
+    //var dfsf;
+    //function dfg(c) {
+    //  alert(c)
+    //}
+    //dfg("dfdsfdsf");
   }
 }
 </script>

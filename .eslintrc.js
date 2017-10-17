@@ -31,7 +31,8 @@ module.exports = {
     'space-before-blocks': 'off',
     'block-spacing': 'off',
     'no-sequences': 'off',
-    'quotes': 'off'
+    'quotes': 'off',
+    'no-unused-vars': 'off'
   },
   globals: {}
 }

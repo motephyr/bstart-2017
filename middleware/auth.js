@@ -6,5 +6,6 @@ export default function ({ store, redirect, error }) {
       message: 'You are not connected',
       statusCode: 403
     })
+    return redirect('/login')
   }
 }

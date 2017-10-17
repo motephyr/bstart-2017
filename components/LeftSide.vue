@@ -19,9 +19,9 @@
           </el-option>
         </el-select>
         <!--</el-tooltip>-->
-        <!--<select v-model="$store.state.year" @change="getYearPlaceId()">-->
-          <!--　<option :value="p" v-for="(p, px) in $store.state.yearPlaces.years">{{p}}</option>-->
-        <!--</select>-->
+        <select v-model="$store.state.year" @change="getYearPlaceId()">
+          　<option :value="p" v-for="(p, px) in $store.state.yearPlaces.years">{{p}}</option>
+        </select>
       </li>
       <li class="place">
         <!--<el-tooltip class="item" effect="dark" placement="top">-->
@@ -35,11 +35,12 @@
             </el-option>
           </el-select>
         <!--</el-tooltip>-->
-        <!--<select v-model="$store.state.place" @change="getYearPlaceId()">-->
-          <!--　<option :value="p" v-for="(p, px) in $store.state.yearPlaces.places">{{p}}</option>-->
-        <!--</select>-->
+        <select v-model="$store.state.place" @change="getYearPlaceId()">
+          　<option :value="p" v-for="(p, px) in $store.state.yearPlaces.places">{{p}}</option>
+        </select>
       </li>
     </ul>
+    <!--<ul class="mlist" v-if="$store.place == '">-->
     <ul class="mlist">
       <li class="listLi"><nuxt-link class="listbutton" to="/funding_implementations" >經費執行情形</nuxt-link></li>
       <li class="listLi"><nuxt-link class="listbutton" to="/bookstarts" >嬰幼兒閱讀活動統計</nuxt-link></li>
@@ -55,6 +56,11 @@
 
 <script>
 export default {
+  created () {
+    this.$store.dispatch('setIsTitle', {
+      is_title: "MMMMMMM"
+    })
+  },
   mounted: function () {
     $(document).ready(function () {
       // pageUrld = window.location.pathname;

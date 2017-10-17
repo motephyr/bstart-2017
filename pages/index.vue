@@ -7,13 +7,13 @@
       <!--<p><i>To login, use <b>demo</b> as username and <b>demo</b> as password.</i></p>-->
       <label>Username<el-input type="text" v-model="formUsername" name="username" ></el-input></label>
       <label>Password<el-input type="password" v-model="formPassword" name="password" ></el-input></label>
-      <el-button type="submit">Login</el-button>
+      <el-button type="submit">登入</el-button>
     </form>
     <div v-else>
-      Hello {{ $store.state.authUser.username }}!
-      <pre>I am the secret content, I am shown only when the use is connected.</pre>
+      {{ $store.state.authUser.username }} 您好!
+      <p>I am the secret content, I am shown only when the use is connected.</p>
       <p><i>You can also refresh this page, you'll still be connected!</i></p>
-      <el-button @click="logout">Logout</el-button>
+      <el-button @click="logout">登出</el-button>
     </div>
     <p><nuxt-link to="/secret">Super secret page</nuxt-link></p>
     </div>

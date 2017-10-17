@@ -6,15 +6,15 @@
           <div class="row">
             <h2>館員、閱讀志工及幼托相關培訓課程</h2>
 
-            <div v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}</div>
-            <div v-for="(x, ix) in bookstarts_1.xaxio" :key="x.id">
-              <div>{{x.value}}</div>
-              <div v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">
-                <div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]">
-                  <el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>
-                </div>
-              </div>
-            </div>
+            <!--<div v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}</div>-->
+            <!--<div v-for="(x, ix) in bookstarts_1.xaxio" :key="x.id">-->
+              <!--<div>{{x.value}}</div>-->
+              <!--<div v-for="(y, iy) in bookstarts_1.yaxio" :key="y.id">-->
+                <!--<div v-if="bookstarts_1.value.length > ix && bookstarts_1.value[ix]">-->
+                  <!--<el-input type="text" v-model="bookstarts_1.value[ix][iy]" ></el-input>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
 
           </div>
         </div>
@@ -22,7 +22,7 @@
           <thead>
           <tr>
             <th></th>
-            <th v-for="y in bookstarts_1.yaxio" :key="y.id">{{y.value}}</th>
+            <th v-for="y in bookstarts_1.yaxio" :key="y.id">{{(y.value == '辦理場次') ? 'x' : 'y'}}</th>
           </tr>
           </thead>
           <tbody>
@@ -190,18 +190,27 @@ export default {
     }
   },
   methods: {
-    update_data (name) {
-      var changeValue = _(this[name].xaxio).map((x, i) => {
-        x.table_values = this[name].value[i]
-        return x
-      }).value()
-      console.log(changeValue)
-      axios.post('/api/table_values/' + name, {change_value: changeValue, yearPlaceId: this.$store.state.yearPlaceId}).then((res) => {
-        this.$router.replace('/promotion_activities?' + Math.random())
-      }).catch((e) => {
-        console.log(e)
-      })
+    async update_data(name) {
+      var updateArray = ['bookstarts_1', 'bookstarts_2', 'bookstarts_3', 'bookstarts_4', 'bookstarts_5', 'bookstarts_6']
+
+      await function () {
+        for (var i = 0; i < updateArray.length; i++) {
+          var changeValue = _(this[name].xaxio).map((x, i) => {
+            x.table_values = this[name].value[i]
+            return x
+          }).value()
+          console.log(changeValue)
+          axios.post('/api/table_values/' + name, {
+            change_value: changeValue,
+            yearPlaceId: this.$store.state.yearPlaceId
+          }).catch((e) => {
+            console.log(e)
+          })
+        }
+      }
+      this.$router.replace('/promotion_activities?' + Math.random())
     },
+
     async getData () {
       try {
         let bookstarts1 = await axios.get('/api/table_fields/' + 'bookstarts_1' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId)

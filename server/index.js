@@ -86,6 +86,12 @@ if (node_env === 'production') {
 
 app.use(session(sess));
 
+app.use(function(req, res, next){
+  // console.log(req)
+  res.locals.req = req;
+  next();
+})
+
 var lockit = new Lockit(lockit_config);
 //只能用jade,不能用pug,因為lockit的layout.jade吃的位置
 app.use(lockit.router);
