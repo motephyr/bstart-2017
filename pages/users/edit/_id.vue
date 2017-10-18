@@ -27,28 +27,29 @@ import axios from '~/plugins/axios'
 // fields definition
 var tableColumns = [
   {
-    name: '姓名',
-    type: 'string'
+    name: 'name',
+    type: 'string',
+    title: '姓名'
   },
   {
-    name: '電子郵件',
-    type: 'string'
+    name: 'email',
+    type: 'string',
+    title: '電子郵件'
   },
   {
-    name: '帳號',
-    type: 'string'
+    name: 'account',
+    type: 'string',
+    title: '帳號'
   },
   {
-    name: '電話',
-    type: 'string'
+    name: 'phone',
+    type: 'string',
+    title: '電話'
   },
   {
-    name: '行動',
-    type: 'string'
-  },
-  {
-    name: '縣市',
-    type: 'string'
+    name: 'mobile',
+    type: 'string',
+    title: '行動'
   },
   {
     name: 'pwdResetToken',
