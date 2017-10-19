@@ -20,14 +20,15 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in promotion_activities_1.yaxio" :key="y.id">
               <div v-if="promotion_activities_1.value.length > ix && promotion_activities_1.value[ix]">
-                <el-input type="text" v-model="promotion_activities_1.value[ix][iy]" ></el-input>
+                {{promotion_activities_1.value[ix][iy]}}
               </div>
             </td>
-            <td>{{x.description}}</td>
+            <td><el-input type="text" v-model="x.description" placeholder="描述"></el-input>
+                  <div class="ftBt"  @click="update_description(x.id, x.description)"><i class="icon-loupe"></i> 修改描述</div>
+            </td>          
           </tr>
           </tbody>
         </table>
-        <el-button @click="update_data('promotion_activities_1')">Update</el-button>
 
         <table class="gTable sminputW80">
           <!--<colgroup>-->
@@ -44,14 +45,16 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in promotion_activities_2.yaxio" :key="y.id">
               <div v-if="promotion_activities_2.value.length > ix && promotion_activities_2.value[ix]">
-                <el-input type="text" v-model="promotion_activities_2.value[ix][iy]" ></el-input>
+                {{promotion_activities_2.value[ix][iy]}}             
               </div>
             </td>
-            <td>{{x.description}}</td>
+            <td><el-input type="text" v-model="x.description" placeholder="描述"></el-input>
+                  <div class="ftBt"  @click="update_description(x.id, x.description)"><i class="icon-loupe"></i> 修改描述</div>
+            </td>
+
           </tr>
           </tbody>
         </table>
-        <el-button @click="update_data('promotion_activities_2')">Update</el-button>
 
         <table class="gTable sminputW80">
           <!--<colgroup>-->
@@ -68,21 +71,19 @@
             <td>{{x.value}}</td>
             <td v-for="(y, iy) in promotion_activities_3.yaxio" :key="y.id">
               <div v-if="promotion_activities_3.value.length > ix && promotion_activities_3.value[ix]">
-                <el-input type="text" v-model="promotion_activities_3.value[ix][iy]" />
+                {{promotion_activities_3.value[ix][iy]}}
               </div>
             </td>
-            <td>{{x.description}}</td>
+            <td><el-input type="text" v-model="x.description" placeholder="描述"></el-input>
+                  <div class="ftBt"  @click="update_description(x.id, x.description)"><i class="icon-loupe"></i> 修改描述</div>
+            </td>
           </tr>
           </tbody>
         </table>
-        <el-button @click="update_data('promotion_activities_3')">Update</el-button>
 
         <nuxt-link to="/">Back to the home page</nuxt-link>
+        <edit :promotion_activities_edit="promotion_activities_edit" />
       </div>
-    </div>
-    <div id="footerBar">
-      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
     </div>
   </div>
 </template>
@@ -90,7 +91,11 @@
 <script>
 import axios from '~/plugins/axios'
 import _ from 'lodash'
+import Edit from './edit.vue'
 export default {
+  components: {
+    Edit
+  },
   data () {
     return {
       promotion_activities_1: {
@@ -112,13 +117,8 @@ export default {
     }
   },
   methods: {
-    update_data (name) {
-      var changeValue = _(this[name].xaxio).map((x, i) => {
-        x.table_values = this[name].value[i]
-        return x
-      }).value()
-      console.log(changeValue)
-      axios.post('/api/table_values/' + name, {change_value: changeValue, yearPlaceId: this.$store.state.yearPlaceId}).then((res) => {
+    update_description (id, description) {
+      axios.patch('/api/table_field_xs/' + id,{description: description}).then((res) => {
         this.$router.replace('/promotion_activities?' + Math.random())
       }).catch((e) => {
         console.log(e)
