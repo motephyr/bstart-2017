@@ -50,13 +50,13 @@
         </table>
             <button @click="update_data('reading_activities_2')">Update</button>
 
-        <nuxt-link to="/">Back to the home page</nuxt-link>
+        <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
         <edit :reading_activities_edit="reading_activities_edit" />
       </div>
     </div>
     <div id="footerBar">
-      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+      <!--<nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>-->
+      <div class="ftBt"  @click="addYear()"><i class="icon-checkmark5"></i>儲存</div>
     </div>
   </div>
 </template>

@@ -7,12 +7,15 @@
           <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
         <ul id="allYear" class="mgCenter">
             <li class="single row" :value="p.id" v-for="p in years">
-                <div class="col-6 col-sm-5 col-md-4 col-lg-2 year">{{p}}</div>
-                <div class="col-6 col-sm-5 col-md-4 col-lg-2 dateArrival"><el-date-picker v-model="valuePicker" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker></div>
-                <div class="col-6 col-sm-5 col-md-4 col-lg-2 showSw"><el-switch v-model="valueSw" on-color="#13ce66" off-color="#ff4949"></el-switch></div>
-                <div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor">215,345,678</div>
-                <div class="col-6 col-sm-5 col-md-4 col-lg-2 CapitalGate">345,345,678</div>
-                <div class="col-6 col-sm-5 col-md-4 col-lg-2 Subtotal">3,945,345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-4 year">{{p}}</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-4 dateArrival"><el-date-picker v-model="valuePicker" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker></div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-4 showSw"><el-switch v-model="valueSw" on-color="#13ce66" off-color="#ff4949"></el-switch></div>
+                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 year">{{p}}</div>-->
+                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 dateArrival"><el-date-picker v-model="valuePicker" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker></div>-->
+                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 showSw"><el-switch v-model="valueSw" on-color="#13ce66" off-color="#ff4949"></el-switch></div>-->
+                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor">215,345,678</div>-->
+                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 CapitalGate">345,345,678</div>-->
+                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 Subtotal">3,945,345,678</div>-->
                 <el-tooltip class="item" effect="dark" content="刪除該年度資料" placement="left">
                     <div @click="openDlThisYear(p)" class="dlThisYear icon-cancel"></div>
                 </el-tooltip>
@@ -21,7 +24,7 @@
       </div>
     </div>
     <div id="footerBar">
-        <div class="ftBt"  @click="addYear()"><i class="icon-plus4"></i> 新增年度計畫</div>
+        <div class="ftBt"  @click="addYear()"><i class="icon-plus4"></i>新增年度計畫</div>
     </div>
   </div>
 </template>
@@ -227,4 +230,29 @@ export default {
           }
       }
   }
+  @media (min-width: 680px){
+      .col-sm-5{
+          -ms-flex: 0 0 41.666667%;
+          -webkit-box-flex: 0;
+          flex: 0 0 41.666667%;
+          max-width: 41.666667%;
+      }
+  }
+  @media (min-width: 768px){
+      .col-md-4{
+          -ms-flex: 0 0 33.333333%;
+          -webkit-box-flex: 0;
+          flex: 0 0 33.333333%;
+          max-width: 33.333333%;
+      }
+  }
+  @media (min-width: 1024px){
+      .col-lg-2{
+          -ms-flex: 0 0 16.666667%;
+          -webkit-box-flex: 0;
+          flex: 0 0 16.666667%;
+          max-width: 16.666667%;
+      }
+  }
+
 </style>

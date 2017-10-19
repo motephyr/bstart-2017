@@ -247,7 +247,6 @@ export default {
       width: 114px;
       background-color: rgb(30, 143, 139);
       border: 1px solid rgb(30, 143, 139);
-      color: rgba(255, 255, 255, 0.69);
       height: 36px;
       line-height: 36px;
       margin: 0 0 0 -5px;
@@ -257,11 +256,29 @@ export default {
       text-align: center;
       display: inline-block;
       cursor: pointer;
+      color: rgb(131, 219, 210);
       transition: all 0.3s;
+      i{
+        display: inline-block;
+        position: relative;
+        margin: 0;
+        height: 34px;
+        line-height: 34px;
+        padding: 0 2px;
+        &:before{
+        }
+      }
       &:hover{
-        color: rgb(30, 143, 139);
-        border: 1px solid rgba(30, 143, 139, 0.6);
-        background-color: #FFF;
+        color: rgb(165, 255, 0);
+        i{
+          &:before{
+          }
+        }
+      }
+      &:active{
+        box-shadow: 0 0 0 1px rgb(165, 255, 0);
+        i:before{
+        }
       }
     }
   }

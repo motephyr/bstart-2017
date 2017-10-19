@@ -8,14 +8,14 @@
       </div>
     </div>
     <div id="footerBar">
-      <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>
+      <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i>返回</div>
       <el-tooltip class="item" effect="dark" content="刪除該帳號" placement="top">
         <div @click="deleteAccount" class="ftBt"><i class="icon-cancel"></i>刪除</div>
       </el-tooltip>
       <label for="aSwitch">帳號使用</label>
       <el-switch id="aSwitch" v-model="accountSwitch" on-color="#7ed321" off-color="#ff4949"></el-switch>
-      <div class="ftBt" @click="reset_pwdResetToken(params.id)"><i class="icon-rotate_right"></i> 更新驗證碼</div>
-      <div class="ftBt"><i class="icon-checkmark5"></i> 儲存</div>
+      <div class="ftBt" @click="reset_pwdResetToken(params.id)"><i class="icon-rotate_right"></i>更新驗證碼</div>
+      <div class="ftBt"><i class="icon-checkmark5"></i>儲存</div>
     </div>
   </div>
 </template>

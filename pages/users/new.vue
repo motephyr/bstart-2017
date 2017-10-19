@@ -9,8 +9,8 @@
       </div>
     </div>
     <div id="footerBar">
-      <nuxt-link class="ftBt" to="/users/list"><i class="icon-chevron-thin-left"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()">確定</div>
+      <nuxt-link class="ftBt" to="/users/list"><i class="icon-chevron-thin-left"></i>返回</nuxt-link>
+      <div class="ftBt"  @click="addYear()"><i class="icon-user-check"></i>送出</div>
     </div>
   </div>
 </template>

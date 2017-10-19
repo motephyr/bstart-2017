@@ -147,8 +147,9 @@ export default {
         width: 100%;
         height: 60px;
         color: #129895;
-        transition: all 0.2s;
-        background: url("/img/listHover.svg") -6px 6px no-repeat;
+        /*background: url("/img/listHover.svg") -6px 6px no-repeat;*/
+        background-color: rgba(213, 235, 227, 0);
+        transition: background 0.5s;
         .listbutton {
           font-size: 1.15em;
           font-weight: 300;
@@ -168,8 +169,11 @@ export default {
         }
         &:hover{
           /*background: url("/img/listHover.svg") 0 6px no-repeat;*/
+          background-color: rgba(30, 143, 139, 0.16);
+          -webkit-backdrop-filter: blur(10px);
           .listbutton{
-            color: #FF6500;
+            /*color: #FF6500;*/
+            /*background: url(/img/listHover.svg) 0 6px no-repeat;*/
           }
         }
         &.active{
