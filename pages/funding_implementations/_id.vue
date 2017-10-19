@@ -11,8 +11,8 @@
       </div>
       <div class="row">
         <div class="addTabName">
-          <el-input></el-input>
-          <div class="ftBt"><i class="icon-loupe"></i> 新增項目</div></div>
+          <el-input v-model="newTabName"></el-input>
+          <div class="ftBt" @click="addNewTab"><i class="icon-loupe"></i> 新增項目</div></div>
       </div>
         <el-tabs type="border-card" @tab-click="handleClick">
           <el-tab-pane label="總表">
@@ -78,6 +78,7 @@ import _ from 'lodash'
 export default {
   data () {
     return {
+      newTabName: '',
       structs: [],
       chooseTab: '',
       vuexData: this.$store.state,
@@ -115,6 +116,18 @@ export default {
     }
   },
   methods: {
+    async addNewTab() {
+      if (this.newTabName !== '') {
+        try {
+          let res = await axios.post('/api/table_fields/postSubField/' + 'funding_implementations', {year: this.$store.state.year, subField: this.newTabName})
+          this.$router.replace('/funding_implementations?' + Math.random())
+        } catch (e) {
+          console.log(e)
+        }
+      } else {
+        alert('未輸入帳號')
+      }
+    },
     handleClick(tab, event) {
       this.chooseTab = event.target.innerHTML
 //      console.log(tab, event);
@@ -151,10 +164,14 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        axios.delete('/api/table_fields/deleteSubField/' + 'funding_implementations', {params: {year: this.$store.state.year, subField: this.chooseTab}})
+      }).then(() => {
         this.$message({
           type: 'success',
           message: '刪除成功!'
         });
+      }).then(() => {
+        this.$router.replace('/funding_implementations?' + Math.random())
       }).catch(() => {
         this.$message({
           type: 'info',
