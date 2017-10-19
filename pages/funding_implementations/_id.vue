@@ -67,7 +67,7 @@
     <div id="footerBar">
       <!--<button @click="update_data(struct.sub_field)">Update</button>-->
       <!--<div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>-->
-      <div class="ftBt"><i class="icon-checkmark5"></i> 儲存</div>
+      <div class="ftBt" @click="update_data()"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
   </div>
 </template>
@@ -79,6 +79,7 @@ export default {
   data () {
     return {
       structs: [],
+      chooseTab: '',
       vuexData: this.$store.state,
       tableData3: [
         {local: '基隆市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
@@ -115,12 +116,14 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
+      this.chooseTab = event.target.innerHTML
 //      console.log(tab, event);
     },
     inputChange(e) {
       e.target.value = e.target.value.replace(/[^\d]/g, '')
     },
-    update_data (name) {
+    update_data () {
+      var name = this.chooseTab
       var struct = _(this.structs).filter((x) => {return x.sub_field === name}).value()[0]
       var changeValue = _(struct.xaxio).map((x, i) => {
         x.table_values = struct.value[i]
