@@ -109,7 +109,7 @@ a, a:hover, a:focus, a:visited {
   height: 58px;
   text-align: center;
   //border-top: 1px solid #D9E3E5;
-  background-color: #1E8F8B;
+  background-color: #129895;
   .ftBt{
     i:before,i:after{
       vertical-align: middle;
@@ -122,13 +122,22 @@ a, a:hover, a:focus, a:visited {
     margin: 10px 6px 10px 6px;
     padding: 0 12px 0 0;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 17px;
     text-align: center;
     display: inline-block;
     cursor: pointer;
     overflow: hidden;
-    box-shadow: 0 0 0 1px rgb(0, 111, 111);
-    color: rgb(131, 219, 210);
+    background-color: rgba(255, 255, 255, 0.8);
+    //box-shadow:
+    //  0 -1px 0 0 rgb(255, 255, 255),
+    //  0 1px 0 0 rgb(127, 202, 199),
+    //  0 1px 0 1px rgb(28, 110, 108),
+    //  0 -1px 0 1px rgb(19, 75, 74);
+    box-shadow:
+      0 -1px 0 1px rgb(28, 110, 108),
+      0 1px 0 1px rgb(28, 110, 108);
+    color: rgb(39, 151, 148);
+    //text-shadow: 0 1px 0 rgb(28, 46, 44);
     transition: all 0.2s;
     i{
       display: inline-block;
@@ -141,15 +150,26 @@ a, a:hover, a:focus, a:visited {
       }
     }
     &:hover{
-      color: rgb(255, 224, 0);
+      //box-shadow: 0 0 0 1px rgb(255, 224, 0);
+      //color: rgb(255, 224, 0);
+      //background-color: #2CAAA7;
+      background-color: #FFFFFF;
+      //box-shadow: 0 0 0 1px rgb(152, 255, 245);
+      //color: rgb(152, 255, 245);
       i{
         &:before{
+          //text-shadow: 0 1px 2px rgba(0, 36, 32, 0.86);
         }
       }
     }
     &:active{
-      box-shadow: 0 0 0 1px rgb(255, 224, 0);
+      //box-shadow: 0 0 0 1px rgb(0, 111, 111);
+      //background-color: #207D7B;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: rgb(39, 151, 148);
+      //text-shadow: 0 1px 0 rgb(39, 151, 148);
       i:before{
+        //text-shadow: 0 1px 0 rgba(39, 151, 148, 0.56);
       }
     }
     [type=file]{
@@ -316,7 +336,7 @@ table.gTable{
       border-color: #20a0ff;
     }
     &:disabled{
-      border: 0 solid none;
+      border: 0 none;
       background-color: rgba(0, 0, 0, 0);
     }
   }

@@ -112,7 +112,7 @@ export default {
         .el-select{
           width: 105px;
           .el-input__inner{
-            color: #1E8F8B;
+            color: #129895;
             text-align: center;
           }
         }

@@ -1,27 +1,14 @@
 <template>
-    <div>
-        <!--<div id="headerBar">-->
-            <!--<div class="stepguide">-->
-                <!--<el-steps :space="180" :active="0" finish-status="success">-->
-                    <!--<el-step title="步骤 1" description="請下載活動表件標準格式" icon="document"></el-step>-->
-                    <!--<el-step title="步骤 2" description="上傳已修改的檔案並預覽確認" icon="upload"></el-step>-->
-                <!--</el-steps>-->
-                <!--<div class="pd20">-->
-                    <!--<el-button type="primary" size="large" class="icon-file-excel-o"> 標準格式下載</el-button>-->
-                    <!--<nuxt-link class="ftBt buttonR" to="/activity/uploadedit">下一步 <i class="icon-chevron-thin-right"></i></nuxt-link>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="spMainPanel">-->
-        <div class="nuxtMainPanel ovh">
-            <div id="hot"></div>
-        </div>
-        <div id="footerBar">
-            <div class="ftBt" id="downBt"><i class="icon-file-excel-o"></i>下载</div>
-            <div class="ftBt"><i class="icon-file-excel-o"></i>上傳<input type="file" id="changeBt"/></div>
-            <div class="ftBt" id="showDataBt"><i class="icon-checkmark5"></i>儲存</div>
-        </div>
+  <div>
+    <div class="nuxtMainPanel ovh">
+      <div id="hot"></div>
     </div>
+    <div id="footerBar">
+      <div class="ftBt" id="downBt"><i class="icon-file-excel-o"></i>下载</div>
+      <div class="ftBt"><i class="icon-file-excel-o"></i>上傳<input type="file" id="changeBt"/></div>
+      <div class="ftBt" id="showDataBt"><i class="icon-checkmark5"></i>儲存</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -207,8 +194,27 @@
         *更多规则自己定义吧
         */
         alert(JSON.stringify(tmp));
-        // window.open("data:text/html;charset=utf-8,"+JSON.stringify(tmp));
+//         window.open("data:text/html;charset=utf-8,"+JSON.stringify(tmp));
         console.log(tmp);
+        console.log("data:text/html;charset=utf-8,"+JSON.stringify(tmp));
+
+//        axios("../../upload", {method: "POST", data: "data:text/html;charset=utf-8,"+JSON.stringify(tmp)});
+
+//        /* set up an async GET request with axios */
+//        axios("/upload", {method: "POST", data: tmp
+//        }).catch(function(err) {
+//          /*錯誤獲取數據 */
+//        }).then(function(res) {
+//          /* 解析，當它接收到該數據 */
+//          var data = new Uint8Array(res.data);
+//          var workbook = XLSX.read(data, {type: "array"});
+//          return workbook;
+//        }).catch(function(err) {
+//          /* 解析錯誤 */
+//        }).then(function(workbook) {
+//          /* 在這裡做工作手冊 */
+//        });
+
         return tmp;
       }
       //----handsontable 初始化 开始------

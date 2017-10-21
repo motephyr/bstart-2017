@@ -109,6 +109,12 @@ createFolder(uploadFolder);
 
 app.post('/upload', upload.single('logos'), function(req, res, next){
   res.send({ret_code: '0'});
+  // file.path('/upload/asd');
+  var file = req.file;
+  console.log('文件类型：%s', file.mimetype);
+  console.log('原始文件名：%s', file.originalname);
+  console.log('文件大小：%s', file.size);
+  console.log('文件保存路径：%s', file.path);
 });
 
 app.get('/form', function(req, res, next){
