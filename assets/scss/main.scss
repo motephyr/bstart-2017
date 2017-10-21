@@ -129,7 +129,7 @@ a, a:hover, a:focus, a:visited {
     overflow: hidden;
     box-shadow: 0 0 0 1px rgb(0, 111, 111);
     color: rgb(131, 219, 210);
-    transition: all 0.5s;
+    transition: all 0.2s;
     i{
       display: inline-block;
       position: relative;
@@ -141,14 +141,14 @@ a, a:hover, a:focus, a:visited {
       }
     }
     &:hover{
-      color: rgb(165, 255, 0);
+      color: rgb(255, 224, 0);
       i{
         &:before{
         }
       }
     }
     &:active{
-      box-shadow: 0 0 0 1px rgb(165, 255, 0);
+      box-shadow: 0 0 0 1px rgb(255, 224, 0);
       i:before{
       }
     }

@@ -126,7 +126,8 @@
           ))], { type: "" }); //创建二进制对象写入转换好的字节流
         },
         onExport(json, title, type) {//直接下载
-          utl.Download.byObj(this.export(json, title, type), "下载.xlsx");
+//          utl.Download.byObj(this.export(json, title, type), "下载.xlsx");
+          utl.Download.byObj(this.export(json, title, type), "下载.ods");
         }
       };
       utl.Download = {
@@ -162,13 +163,13 @@
       }
 
       const xHred = {
-        "項次": "1",
-        "日期/時間": "2",
-        "活動主題": "3",
-        "活動內容": "4",
-        "活動對象": "5",
-        "活動地點": "6",
-        "承辦單位電話": "7"
+        "項次": "nb",
+        "日期/時間": "date",
+        "活動主題": "title",
+        "活動內容": "activities",
+        "活動對象": "object",
+        "活動地點": "local",
+        "承辦單位電話": "mobPhone"
       };
       const filterVal = {//<=====值转化
       };
@@ -226,7 +227,7 @@
         autoWrapRow: true,
         // height: 641,
         // maxRows: 22,
-        minRows: 12,
+        minRows: 1,
 //        contextMenuCopyPaste: true,
 //        contextMenuCopyPaste: {
 //          swfPath: './js/ZeroClipboard.swf'
@@ -276,7 +277,7 @@
         box-shadow: 0 2px 64px 1px rgba(0, 38, 65, 0.22);
     }
     .handsontable thead th .relative {
-        padding: 2px 16px;
+        /*padding: 2px 16px;*/
     }
     .htContextMenu table.htCore {
         border: 0 none;
@@ -316,6 +317,25 @@
     }
     .handsontable .htDimmed {
         color: #B7B7B7;
+    }
+    table.htCore{
+
+    }
+    .handsontable thead th:first-child{
+        cursor: se-resize;
+    }
+    .handsontable thead th{
+        cursor: s-resize;
+    }
+    .handsontable tbody th{
+        cursor: e-resize;
+    }
+    .handsontable tbody th.ht__highlight, .handsontable thead th.ht__highlight {
+        background-color: #CFE5FF;
+    }
+    .handsontable.ht__selection--columns thead th.ht__highlight, .handsontable.ht__selection--rows tbody th.ht__highlight {
+        background-color: #5495F4;
+        color: #FFF;
     }
 </style>
 
