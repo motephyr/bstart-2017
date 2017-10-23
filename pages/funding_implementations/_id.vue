@@ -11,8 +11,6 @@
       </div>
       <div class="row">
         <div class="addTabName">
-          <!--<el-input></el-input>-->
-          <!--<div class="ftBt"><i class="icon-loupe"></i> 新增項目</div></div>-->
           <el-input v-model="newTabName"></el-input>
           <div class="ftBt" @click="addNewTab"><i class="icon-loupe"></i> 新增項目</div></div>
       </div>
@@ -69,7 +67,6 @@
     <div id="footerBar">
       <!--<button @click="update_data(struct.sub_field)">Update</button>-->
       <!--<div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>-->
-      <!--<div class="ftBt"><i class="icon-checkmark5"></i> 儲存</div>-->
       <div class="ftBt" @click="update_data()"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
   </div>

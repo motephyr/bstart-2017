@@ -39,14 +39,11 @@ router.patch('/table_field_xs/:id', async function (req, res, next) {
     var table_field_x = (await TableFieldX.forge().query((qb) => {
       qb.where({id: req.params.id});
     }).fetch());
-
     await table_field_x.save({description: req.body.description},{patch: true}).toJSON()
-
     res.status(200).send("ok")
   } catch(e) {
     console.log(e)
     res.status(500).json(e);
-
   }
 
 })
@@ -56,7 +53,6 @@ router.patch('/table_field_xs/showHide/:id', async function (req, res, next) {
     var table_field_x = (await TableFieldX.forge().query((qb) => {
       qb.where({id: req.params.id});
     }).fetch());
-
     var deleted_at = (table_field_x.toJSON().deleted_at) ? null : (new Date()).toISOString()
     
     await table_field_x.save({deleted_at: deleted_at},{patch: true}).toJSON()

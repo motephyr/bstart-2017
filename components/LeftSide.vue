@@ -89,7 +89,6 @@ export default {
   data(){
     return {
       optionsYear: this.$store.state.yearPlaces.years,
-//      optionsPlace: this.$store.state.yearPlaces.places,
       valueYear: this.$store.state.year,
       valuePlace: this.$store.state.place
     }

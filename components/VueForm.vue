@@ -27,13 +27,11 @@
             </div>
           </div>
         </div>
-        <!--<el-select v-model="placeAlls" placeholder="各縣市單位">-->
-          <el-select v-model="newObj['area']" placeholder="各縣市單位" @change="change">
+        <el-select v-model="newObj['area']" placeholder="各縣市單位" @change="change">
           <el-option
                   v-for="item in placeAs"
                   :key="item.value"
                   :label="item.label"
-                  <!--:value="item.value">-->
                   :value="item.label">
           </el-option>
         </el-select>
@@ -99,7 +97,6 @@ export default {
       dataPath: '',
       searchForColumn: '',
       searchFor: '',
-//      placeAlls: '',
       placeAs: [{
         value: '0',
         label: '中央'

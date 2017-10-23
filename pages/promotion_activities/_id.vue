@@ -78,7 +78,6 @@
         <el-button @click="update_data('promotion_activities_3')">Update</el-button>
 
         <nuxt-link to="/">Back to the home page</nuxt-link>
-        <!--<edit :promotion_activities_edit="promotion_activities_edit" />-->
       </div>
     </div>
     <div id="footerBar">

@@ -6,9 +6,6 @@
         <p>If you try to access this URL not connected, you will be redirected to the home page (server-side or client-side)</p>
 
         <table class="gTable sminputW80">
-          <!--<colgroup>-->
-          <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
           <thead>
           <tr>
             <th></th>
@@ -31,9 +28,6 @@
         </table>
 
         <table class="gTable sminputW80">
-          <!--<colgroup>-->
-          <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
           <thead>
           <tr>
             <th></th>
@@ -51,15 +45,11 @@
             <td><el-input type="text" v-model="x.description" placeholder="描述"></el-input>
               <div class="ftBt"  @click="update_description(x.id, x.description)"><i class="icon-loupe"></i> 修改描述</div>
             </td>
-
           </tr>
           </tbody>
         </table>
 
         <table class="gTable sminputW80">
-          <!--<colgroup>-->
-          <!--<col style="background-color:red">-->
-          <!--</colgroup>-->
           <thead>
           <tr>
             <th></th>
@@ -80,7 +70,6 @@
           </tr>
           </tbody>
         </table>
-
         <nuxt-link to="/">Back to the home page</nuxt-link>
         <edit :promotion_activities_edit="promotion_activities_edit" />
       </div>

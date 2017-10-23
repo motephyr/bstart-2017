@@ -37,9 +37,7 @@ router.get('/table_fields/:id', async function (req, res, next) {
     } catch(e) {
       console.log(e)
       res.status(500).json(e);
- 
     }
-
 })
 
 router.get('/table_fields/all/:id', async function (req, res, next) {
@@ -66,16 +64,26 @@ router.get('/table_fields/all/:id', async function (req, res, next) {
       var xs = _(table_field[0].table_field_xs).orderBy('location').filter((x) => {return !x.deleted_at}).value()
     }
     // var xs_value = _.chain(xs).map((x) => {return x.value}).value()
-    var value = _(xs).map((x) => {return x.table_values[0] && x.table_values[0].value != null ? x.table_values[0].value : [null,null] }).value()
 
+    var mid_value = _(table_field).map((x) => {return _(x.table_field_xs).map((y) => {return y.table_values}).value() }).value()
+    
+    var mid2_value = _(mid_value[0]).map((x) => {return _(x).map((y) => {return y.value}).value() }).value()
+    
+    var value = _(mid2_value).map((x) => { 
+      return _(x).reduce((sum, x) => {
+        var m = x[0] ? parseInt(x[0]) : 0
+        var n = x[1] ? parseInt(x[1]) : 0
+        
+        return [sum[0]+m, sum[1]+ n]
+      },[0,0])
+    }).value()
+    
     res.status(200).json({xaxio: xs, yaxio: ys, value: value});
 
   } catch(e) {
     console.log(e)
     res.status(500).json(e);
-
   }
-
 })
 
 
@@ -135,26 +143,20 @@ router.post('/table_fields/getSubField/:id', async function (req, res, next) {
       var tableFieldId7 = await knex('table_fields').returning('id').insert(
         {year: req.body.year, field: req.params.id, sub_field: req.body.subField}
       )
-
       var months = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月']
-
       var kk = []
       for(var k=0; k<months.length; k++){
         kk.push({table_field_id: tableFieldId7[0], location: k, value: months[k]})
       }
       await knex('table_field_xs').insert(kk)
-
       await knex('table_field_ys').insert([
         {table_field_id: tableFieldId7[0], location: 0, value: '經常門'},
         {table_field_id: tableFieldId7[0], location: 1, value: '資本門'}
       ])
       res.status(200).send("ok")
-
-
     } catch(e) {
       console.log(e)
       res.status(500).json(e);
-
     }
   })
 
@@ -178,11 +180,9 @@ router.post('/table_fields/getSubField/:id', async function (req, res, next) {
       .del()
 
       res.status(200).send("ok")
-
     } catch(e) {
       console.log(e)
       res.status(500).json(e);
-
     }
   })
 })
