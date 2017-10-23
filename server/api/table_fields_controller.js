@@ -114,7 +114,6 @@ router.post('/table_fields/getSubField/:id', async function (req, res, next) {
     }
 
     var mid_value = _(table_field).map((x) => {return _(x.table_field_xs).map((y) => {return y.table_values}).value() }).value()
-
     var mid2_value = _(mid_value[0]).map((x) => {return _(x).map((y) => {return y.value}).value() }).value()
 
     var value = _(mid2_value).map((x) => {

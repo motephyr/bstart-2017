@@ -15,7 +15,8 @@ router.post('/table_values/:id', async function (req, res, next) {
       qb.where({field: req.params.id});
     }).fetch()).toJSON();      
     
-    var obj = req.body.change_value 
+    var obj = req.body.change_value
+    console.log(obj)
     for(var i=0; i<obj.length; i++){
       var id = obj[i].id
       var table_values = obj[i].table_values
