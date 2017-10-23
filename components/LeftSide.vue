@@ -1,7 +1,12 @@
 <template>
   <div class="nav-list">
     <ul class="mlist">
-      <li class="listLi"><nuxt-link class="listbutton" to="/users/list" ><i class="icon-account"></i>帳號</nuxt-link></li>
+      <div v-if="$store.state.place === '中央'">
+        <li class="listLi"><nuxt-link class="listbutton" to="/users/list" ><i class="icon-account"></i>帳號</nuxt-link></li>
+      </div>
+      <div v-else>
+        <li class="listLi"><nuxt-link class="listbutton" :to="personLink" ><i class="icon-account"></i>帳號</nuxt-link></li>
+      </div>
     </ul>
     <ul class="mlist bdTopLine">
       <li class="listLi"><nuxt-link class="listbutton" to="/years/edit" ><i class="icon-Calendar-year-plan"></i>歷年計畫</nuxt-link></li>
@@ -21,7 +26,7 @@
         <!--</el-tooltip>-->
 
       </li>
-      <li class="place">
+      <li class="place" v-if="$store.state.place === '中央'">
         <!--<el-tooltip class="item" effect="dark" placement="top">-->
           <!--<div slot="content">選擇縣市分類</div>-->
           <el-select v-model="valuePlace" placeholder="縣市" @change="getYearPlaceId()">
@@ -90,7 +95,8 @@ export default {
     return {
       optionsYear: this.$store.state.yearPlaces.years,
       valueYear: this.$store.state.year,
-      valuePlace: this.$store.state.place
+      valuePlace: this.$store.state.place,
+      personLink: '/users/edit/' + this.$store.state.authUser.id
     }
   }
   // ,

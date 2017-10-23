@@ -5,12 +5,13 @@
         <vue-form :fields="fields"
         mode="new"
         model="user"
-        api-url="/api/users/"></vue-form>
+        api-url="/api/users/"
+        ref="vueForm"></vue-form>
       </div>
     </div>
     <div id="footerBar">
       <nuxt-link class="ftBt" to="/users/list"><i class="icon-chevron-thin-left"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()">確定</div>
+      <div class="ftBt"  @click="addNewUser()">確定</div>
     </div>
   </div>
 </template>
@@ -20,28 +21,29 @@ import VueForm from '../../components/VueForm'
 // fields definition
 var tableColumns = [
   {
-    name: '姓名',
-    type: 'string'
+    name: 'name',
+    type: 'string',
+    title: '姓名'
   },
   {
-    name: '電子郵件',
-    type: 'string'
+    name: 'email',
+    type: 'string',
+    title: '電子郵件'
   },
   {
-    name: '帳號',
-    type: 'string'
+    name: 'account',
+    type: 'string',
+    title: '帳號'
   },
   {
-    name: '電話',
-    type: 'string'
+    name: 'phone',
+    type: 'string',
+    title: '電話'
   },
   {
-    name: '行動',
-    type: 'string'
-  },
-  {
-    name: '縣市',
-    type: 'string'
+    name: 'mobile',
+    type: 'string',
+    title: '行動'
   }
 ]
 
@@ -59,6 +61,11 @@ export default {
     return {
       pagetitle: "tableColumns",
       fields: tableColumns
+    }
+  },
+  methods: {
+    addNewUser (id) {
+      this.$refs.vueForm.AddNewUser()
     }
   }
 }

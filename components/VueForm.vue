@@ -27,6 +27,7 @@
             </div>
           </div>
         </div>
+        {{'http://localhost:3000/forgot-password/'+ newObj['pwdResetToken']}}
         <el-select v-model="newObj['area']" placeholder="各縣市單位" @change="change">
           <el-option
                   v-for="item in placeAs"
@@ -35,12 +36,12 @@
                   :value="item.label">
           </el-option>
         </el-select>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <el-button :disabled="!isValid" class="button" type="submit" v-if="mode == 'new'">Add New {{model}}</el-button>
           <el-button :disabled="!isValid" class="button" type="submit" v-if="mode == 'edit'" @click="UpdateUser(newObj.id)">Edit {{model}}</el-button>
-        </div>
+        </div> -->
       </form>
-      <el-button class="button" @click="setMode('index')">返回</el-button>
+      <!-- <el-button class="button" @click="setMode('index')">返回</el-button> -->
     </div>
   </div>
   </div>
@@ -206,7 +207,7 @@ export default {
 
       if (ConfirmBox) {
         const self = this
-        axios.delete(this.apiUrl + id, this.httpOptions).then(() => {
+        axios.delete(this.apiUrl, this.httpOptions).then(() => {
           self.success = true
           self.setMode('')
           setTimeout(() => {

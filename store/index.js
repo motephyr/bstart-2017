@@ -55,7 +55,7 @@ export const actions = {
     if (req.session && req.session.loggedIn) {
       try {
         var res = await axios.post('/api/users/email',{email: req.session.email})
-        commit('SET_USER', {username: req.session.name, area: res.data.area})
+        commit('SET_USER', {username: req.session.name, area: res.data.area, id: res.data._id})
         commit('SET_PLACE', res.data.area)
 
         var yearPlaces = await axios.get('/api/year_places')
