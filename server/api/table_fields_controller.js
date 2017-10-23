@@ -60,7 +60,7 @@ router.get('/table_fields/all/:id', async function (req, res, next) {
     }
     // var xs_value = _.chain(xs).map((x) => {return x.value}).value()
 
-    var mid_value = _(table_field).map((x) => {return _(x.table_field_xs).map((y) => {return y.table_values}).value() }).value()
+    var mid_value = _(table_field).map((x) => {return _(x.table_field_xs).orderBy('location').map((y) => {return y.table_values}).value() }).value()
     
     var mid2_value = _(mid_value[0]).map((x) => {return _(x).map((y) => {return y.value}).value() }).value()
     
