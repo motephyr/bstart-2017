@@ -47,7 +47,7 @@
                       <input type="text" v-model="struct.value[ix][iy]" @keyup="inputChange"/>
                     </div>
                   </td>
-                  <td></td>
+                  <td>{{struct.value[ix] | getSum}}</td>
                 </tr>
                 </tbody>
                 <tfoot>
@@ -113,6 +113,13 @@ export default {
       handler: function(newValue, oldValue) { // 可以获取新值与老值两个参数
         this.getData()
       }
+    }
+  },
+  filters: {
+    getSum(array) {
+      var x = array[0] ? parseInt(array[0]) : 0
+      var y = array[1] ? parseInt(array[1]) : 0
+      return x + y
     }
   },
   methods: {
