@@ -27,12 +27,12 @@
             </div>
           </div>
         </div>
-        <el-select v-model="placeAlls" placeholder="各縣市單位">
+        <el-select v-model="newObj['area']" placeholder="各縣市單位" @change="change">
           <el-option
                   v-for="item in placeAs"
                   :key="item.value"
                   :label="item.label"
-                  :value="item.value">
+                  :value="item.label">
           </el-option>
         </el-select>
         <div class="form-group">
@@ -97,7 +97,6 @@ export default {
       dataPath: '',
       searchForColumn: '',
       searchFor: '',
-      placeAlls: '',
       placeAs: [{
         value: '0',
         label: '中央'
@@ -171,6 +170,9 @@ export default {
     }
   },
   methods: {
+    change: function(value) {
+      this.newObj['area'] = value
+    },
     formatDate: function (value, fmt) {
       if (value == null) return ''
       fmt = (typeof fmt === 'undefined') ? 'D MMM YYYY' : fmt

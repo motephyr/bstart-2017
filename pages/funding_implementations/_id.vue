@@ -11,8 +11,8 @@
       </div>
       <div class="row">
         <div class="addTabName">
-          <el-input></el-input>
-          <div class="ftBt"><i class="icon-loupe"></i> 新增項目</div></div>
+          <el-input v-model="newTabName"></el-input>
+          <div class="ftBt" @click="addNewTab"><i class="icon-loupe"></i> 新增項目</div></div>
       </div>
         <el-tabs type="border-card" @tab-click="handleClick">
           <el-tab-pane label="總表">
@@ -67,7 +67,7 @@
     <div id="footerBar">
       <!--<button @click="update_data(struct.sub_field)">Update</button>-->
       <!--<div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>-->
-      <div class="ftBt"><i class="icon-checkmark5"></i> 儲存</div>
+      <div class="ftBt" @click="update_data()"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
   </div>
 </template>
@@ -78,7 +78,9 @@ import _ from 'lodash'
 export default {
   data () {
     return {
+      newTabName: '',
       structs: [],
+      chooseTab: '',
       vuexData: this.$store.state,
       tableData3: [
         {local: '基隆市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
@@ -114,13 +116,27 @@ export default {
     }
   },
   methods: {
+    async addNewTab() {
+      if (this.newTabName !== '') {
+        try {
+          let res = await axios.post('/api/table_fields/postSubField/' + 'funding_implementations', {year: this.$store.state.year, subField: this.newTabName})
+          this.$router.replace('/funding_implementations?' + Math.random())
+        } catch (e) {
+          console.log(e)
+        }
+      } else {
+        alert('未輸入帳號')
+      }
+    },
     handleClick(tab, event) {
+      this.chooseTab = event.target.innerHTML
 //      console.log(tab, event);
     },
     inputChange(e) {
       e.target.value = e.target.value.replace(/[^\d]/g, '')
     },
-    update_data (name) {
+    update_data () {
+      var name = this.chooseTab
       var struct = _(this.structs).filter((x) => {return x.sub_field === name}).value()[0]
       var changeValue = _(struct.xaxio).map((x, i) => {
         x.table_values = struct.value[i]
@@ -148,10 +164,14 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        axios.delete('/api/table_fields/deleteSubField/' + 'funding_implementations', {params: {year: this.$store.state.year, subField: this.chooseTab}})
+      }).then(() => {
         this.$message({
           type: 'success',
           message: '刪除成功!'
         });
+      }).then(() => {
+        this.$router.replace('/funding_implementations?' + Math.random())
       }).catch(() => {
         this.$message({
           type: 'info',
