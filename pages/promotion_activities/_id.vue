@@ -81,8 +81,8 @@
       </div>
     </div>
     <div id="footerBar">
-      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+      <!--<nuxt-link class="ftBt" to="/"><i class="icon-chevron-thin-left"></i> 返回</nuxt-link>-->
+      <div class="ftBt"  @click="addYear()"><i class="icon-checkmark5"></i>儲存</div>
     </div>
   </div>
 </template>

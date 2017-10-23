@@ -50,13 +50,13 @@
         </table>
             <button @click="update_data('reading_activities_2')">Update</button>
 
-        <nuxt-link to="/">Back to the home page</nuxt-link>
+        <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
         <edit :reading_activities_edit="reading_activities_edit" />
       </div>
     </div>
     <div id="footerBar">
-      <nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>
-      <div class="ftBt"  @click="addYear()"><i class="icon-loupe"></i> 新增年度計畫</div>
+      <!--<nuxt-link class="ftBt" to="/"><i class="icon-reply"></i> 返回</nuxt-link>-->
+      <div class="ftBt"  @click="addYear()"><i class="icon-checkmark5"></i>儲存</div>
     </div>
   </div>
 </template>
@@ -104,14 +104,16 @@ export default {
     async getData () {
       try {
         let readingActivitiesEdit = await axios.get('/api/table_fields/' + 'reading_activities_1' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId +'&action=edit')
+//        let readingActivities1 = await axios.get('/api/table_fields/' + 'reading_activities_1' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId)
+//        let readingActivities2 = await axios.get('/api/table_fields/' + 'reading_activities_2' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId)
         let readingActivities1
         let readingActivities2
         if (this.$store.state.place !== '中央'){
-        readingActivities1 = await axios.get('/api/table_fields/' + 'reading_activities_1' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId)
-        readingActivities2 = await axios.get('/api/table_fields/' + 'reading_activities_2' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId)
+          readingActivities1 = await axios.get('/api/table_fields/' + 'reading_activities_1' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId)
+          readingActivities2 = await axios.get('/api/table_fields/' + 'reading_activities_2' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId)
         } else {
-        readingActivities1 = await axios.get('/api/table_fields/all/' + 'reading_activities_1' + '?year='+ this.$store.state.year)
-        readingActivities2 = await axios.get('/api/table_fields/all/' + 'reading_activities_2' + '?year='+ this.$store.state.year)
+          readingActivities1 = await axios.get('/api/table_fields/all/' + 'reading_activities_1' + '?year='+ this.$store.state.year)
+          readingActivities2 = await axios.get('/api/table_fields/all/' + 'reading_activities_2' + '?year='+ this.$store.state.year)
         }
         this.reading_activities_1 = readingActivities1.data
         this.reading_activities_2 = readingActivities2.data

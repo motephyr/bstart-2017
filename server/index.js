@@ -5,7 +5,6 @@ import bodyParser from 'body-parser'
 import session from 'express-session'
 import methodOverride from 'method-override'
 import multer from 'multer'
-var upload = multer({ dest: 'uploads/' })
 
 var PostgreSqlStore = require('connect-pg-simple')(session);
 var path = require('path');
@@ -96,20 +95,119 @@ app.use('/api', api)
 
 
 
-var createFolder = function(folder){
-  try{
-    fs.accessSync(folder);
-  }catch(e){
-    fs.mkdirSync(folder);
-  }
-};
-var uploadFolder = './upload/';
-createFolder(uploadFolder);
+// var createFolder = function(folder){
+//   try{
+//     fs.accessSync(folder);
+//   }catch(e){
+//     fs.mkdirSync(folder);
+//   }
+// };
+// var uploadFolder = './upload/';
+// createFolder(uploadFolder);
 
 
-app.post('/upload', upload.single('logos'), function(req, res, next){
-  res.send({ret_code: '0'});
+
+
+// var upload = multer({ dest: 'uploads/' })
+// app.post('/upload', upload.single('logos'), function(req,res,next){
+//   var file = req.file;
+//   console.log("名稱︰%s",file.originalname);
+//   console.log("mime︰%s",file.mimetype);
+//
+//   //以下代碼得到檔案後綴
+//   name = file.originalname;
+//
+//   console.log(name);
+//
+//   nameArray = name.split('');
+//   var nameMime = [];
+//   l = nameArray.pop();
+//   nameMime.unshift(l);
+//   while( nameArray.length != 0 && l != '.'){
+//     l = nameArray.pop();
+//     nameMime.unshift(l);
+//   } //Mime是檔案的後綴
+//   Mime=nameMime.join('');
+//   console.log(Mime);
+//   res.send("done");
+//   //重命名檔案 加上檔案後綴
+//   fs.renameSync('./upload/' + file.filename , './upload/' + file.filename + Mime );
+// });
+
+var xlsxUrl;
+app.get('file/:y/:p', function(req, res, next){
+  console.log("name:",req.params.y);
+  console.log("tel:",req.params.p);
+  console.log(req.url);
+  // var objRE = new RegExp(req.url, "/^\d{5}/$");
+  xlsxUrl = req.url;
 });
+
+
+var uploadxlsx = multer({ dest: "uploads/"+xlsxUrl });
+app.post('/upload/:y/:p', uploadxlsx.single('xlsxUp'), function(req, res, next){
+  // res.send({ret_code: '0'});
+  // file.path('/upload/asd');
+  console.log("path:",uploadxlsx);
+  console.log("年:",req.params.y);
+  console.log("地:",req.params.p);
+  console.log('ddf',req.df );
+  var file = req.file;
+  console.log('文件类型：%s', file.mimetype);
+  console.log('原始文件名：%s', file.originalname);
+  console.log('文件大小：%s', file.size);
+  console.log('文件保存路径：%s', file.path);
+});
+
+
+
+// router.get('/export',(req,res,next)=>{
+//   //查询数据库
+//   let realPath = path.join(TMP_PATH, fileName);
+//   let writeStream = fs.createWriteStream(realPath);
+//   let bom = new Buffer('\xEF\xBB\xBF', 'binary');
+//   writeStream.write(bom);
+//   //写入数据内容
+//   writeStream.end();
+//   writeStream.on('finish', ()=> {
+//     res.download(realPath, outName, (err)=> {
+//       fs.unlink(realPath, (err2)=> {
+//         if (err2) {
+//           logger.error('删除文件失败,err=' + err);
+//         }
+//
+//       });
+//       if (err) {
+//         logger.error(err);
+//         res.status(404).end();
+//       }
+//
+//     });
+//   });
+// });
+
+
+// app.post('/upload', upload.single('logos'), function(req, res, next){
+//   res.send({ret_code: '0'});
+//   // file.path('/upload/asd');
+//   var file = req.file;
+//   console.log('文件类型：%s', file.mimetype);
+//   console.log('原始文件名：%s', file.originalname);
+//   console.log('文件大小：%s', file.size);
+//   console.log('文件保存路径：%s', file.path);
+// });
+
+
+// var upload = multer();
+// router.post('/gift_bag/file/upload', upload.fields([{name: 'logos', maxCount: 1}]),function(req,res,next){
+//   var inputFiles = req.files; //未传时为undefined
+//   //读取文件内容
+//   var content = inputFiles['inputFile'][0].buffer.toString();
+//
+// });
+
+
+
 
 app.get('/form', function(req, res, next){
   var form = fs.readFileSync('./form.html', {encoding: 'utf8'});

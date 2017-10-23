@@ -13,6 +13,9 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
+      { src: '/js/handsontable.full.min.js' },
+      { src: '/js/xlsx.full.min.js' },
+      { src: '/js/ZeroClipboard.min.js' }
       // { src: '/js/jquery.min.js' }
       // { src: 'https://unpkg.com/element-ui/lib/index.js' }
     ]
@@ -21,6 +24,7 @@ module.exports = {
   css: [
       'element-ui/lib/theme-default/index.css',
       '~/assets/css/bootstrap.min.css',
+      '~/assets/css/handsontable.full.css',
       '~/static/icon/style.css',
       // '~/assets/css/main.css',
       // 项目中的 Sass 文件

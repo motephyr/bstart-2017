@@ -21,7 +21,7 @@
       </div>
     </div>
     <div id="footerBar">
-        <div class="ftBt"  @click="addYear()"><i class="icon-plus4"></i> 新增年度計畫</div>
+        <div class="ftBt"  @click="addYear()"><i class="icon-plus4"></i>新增年度計畫</div>
     </div>
   </div>
 </template>
@@ -122,11 +122,13 @@ export default {
           border-radius: 12px;
           box-shadow: 0 1px 3px 0 rgba(134, 168, 194, 0.83);
           .year{
-              text-align: center;
-              font-size: 36px;
-              font-weight: 300;
-              color: #37CB6B;
-              margin: 6px 0;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 300;
+            color: #37CB6B;
+            margin: 6px 0;
+            height: 64px;
+            line-height: 64px;
           }
           .dateArrival,.showSw,.RegularGoor,.CapitalGate,.Subtotal{
               text-align: right;
@@ -237,4 +239,29 @@ export default {
           }
       }
   }
+  @media (min-width: 680px){
+      .col-sm-5{
+          -ms-flex: 0 0 41.666667%;
+          -webkit-box-flex: 0;
+          flex: 0 0 41.666667%;
+          max-width: 41.666667%;
+      }
+  }
+  @media (min-width: 768px){
+      .col-md-4{
+          -ms-flex: 0 0 33.333333%;
+          -webkit-box-flex: 0;
+          flex: 0 0 33.333333%;
+          max-width: 33.333333%;
+      }
+  }
+  @media (min-width: 1024px){
+      .col-lg-2{
+          -ms-flex: 0 0 16.666667%;
+          -webkit-box-flex: 0;
+          flex: 0 0 16.666667%;
+          max-width: 16.666667%;
+      }
+  }
+
 </style>

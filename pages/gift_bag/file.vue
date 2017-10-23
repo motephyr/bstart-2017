@@ -3,11 +3,11 @@
         <div class="nuxtMainPanel" drag >
             <div class="pd20">
 
-                <form action="/upload" method="post" enctype="multipart/form-data">
-                    <h2>单图上传</h2>
-                    <input type="file" name="logo">
-                    <input type="submit" value="提交">
-                </form>
+                <!--<form action="/upload" method="post" enctype="multipart/form-data">-->
+                    <!--<h2>单图上传</h2>-->
+                    <!--<input type="file" name="logo">-->
+                    <!--<input type="submit" value="提交">-->
+                <!--</form>-->
 
                 <!--<el-upload-->
                         <!--class="upload-demo"-->
@@ -21,17 +21,24 @@
 
                 <div class="containerCenter">
                     <el-upload
-                            name="logos"
+                            name="xlsxUp"
                             class="upload-demo"
                             drag
-                            action="../../upload"
+                            action="/upload/107/11"
                             list-type=""
                             multiple>
                         <i class="el-icon-upload"></i>
                         <div class="el-upload__text">將文件拖到此處<br><br>或<em>點擊上傳</em></div>
-                        <div class="el-upload__tip" slot="tip">只能上傳jpg/png文件，且不超過500kb</div>
+                        <div class="el-upload__tip" slot="tip">只能上傳xlsx/ods文件</div>
                     </el-upload>
                 </div>
+
+                <!--<form method="POST" action="/upload" encType="multipart/form-data" name="form">-->
+                    <!--<input id="inputFile" type="file"-->
+                           <!--accept="application/vnd.ms-excel|xls"-->
+                           <!--name="logos" onChange={this.handleFileChange}/>-->
+                    <!--<button onClick={this.handleSubmit}>点击提交</button>-->
+                <!--</form>-->
 
                 <!--<div :value="p.id" v-for="p in years">{{p}}</div>-->
                 <!--<button @click="addYear()">addYear</button>-->
@@ -45,6 +52,7 @@
 </template>
 
 <script>
+  import axios from '~/plugins/axios'
   export default {
     data() {
       return {
@@ -69,18 +77,29 @@
       handlePreview(file) {
         console.log(file);
       }
+    },
+    mounted: function () {
+      var y = "106";
+      var p = "11";
+//      var df = "/uploads/xlsx/"+y+"/"+p;
+      axios.get("file/"+y+"/"+p).then(function (res) {
+        var df ="dsfsdfdsfsdf";
+        console.log(res.df);
+        var pd = "sadasd"
+      }).catch(function (error) {
+        console.log(error);
+      })
     }
   }
 </script>
 
 <style>
     .containerCenter{
-        max-width: 280px;
+        width: 220px;
         margin: 0 auto;
+        text-align: center;
         .el-upload-dragger{
-            position: fixed;
-            top: 50%;
-            margin-top: -110px;
+            margin-top: 110px;
             padding: 0 60px;
             width: auto;
         }
