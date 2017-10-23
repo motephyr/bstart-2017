@@ -12,7 +12,7 @@ const router = Router()
 router.get('/year_places', async function (req, res, next) {
     try {
       var year_place = (await YearPlaces.forge().fetch()).toJSON();
-      var years = _(year_place).map((x) => {return x.year}).uniq().value()
+      var years = _(year_place).map((x) => {return {year: x.year, is_show: x.is_show, editable_at: x.editable_at}}).uniqWith(_.isEqual).orderBy('year').value()
       var places = _(year_place).map((x) => {return x.place}).uniq().value()
       res.status(200).json({years: years, places: places});
       
@@ -41,6 +41,20 @@ router.post('/year_places/getId', async function (req, res, next) {
 
   }
 
+})
+
+router.patch('/year_places/:year', async function (req, res, next) {
+  try {
+
+    await knex('year_places')
+    .where('year', req.params.year)
+    .update(req.body)
+
+    res.status(200).send('ok');
+  } catch(e) {
+    console.log(e)
+    res.status(500).json(e);
+  }
 })
 
 router.delete('/year_places', async function (req, res, next) {
