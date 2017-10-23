@@ -39,7 +39,8 @@ export default {
       })
     },
     showHide (id) {
-      axios.patch('/api/table_field_xs/' + id).then((res) => {
+//      axios.patch('/api/table_field_xs/' + id).then((res) => {
+      axios.patch('/api/table_field_xs/showHide/' + id).then((res) => {
         this.$router.replace('/promotion_activities?' + Math.random())
       }).catch((e) => {
         console.log(e)

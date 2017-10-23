@@ -115,11 +115,13 @@ export default {
           border-radius: 12px;
           box-shadow: 0 1px 3px 0 rgba(134, 168, 194, 0.83);
           .year{
-              text-align: center;
-              font-size: 36px;
-              font-weight: 300;
-              color: #37CB6B;
-              margin: 6px 0;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 300;
+            color: #37CB6B;
+            margin: 6px 0;
+            height: 64px;
+            line-height: 64px;
           }
           .dateArrival,.showSw,.RegularGoor,.CapitalGate,.Subtotal{
               text-align: right;

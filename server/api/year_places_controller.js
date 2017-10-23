@@ -27,9 +27,15 @@ router.get('/year_places', async function (req, res, next) {
 
 router.post('/year_places/getId', async function (req, res, next) {
   try {
-    var year_place = (await YearPlace.forge().where({place: req.body.place, year: parseInt(req.body.year)}).fetch()).toJSON();
-
-    res.status(200).json(year_place);
+    // var year_place = (await YearPlace.forge().where({place: req.body.place, year: parseInt(req.body.year)}).fetch()).toJSON();
+    //
+    // res.status(200).json(year_place);
+    var year_place = (await YearPlace.forge().where({place: req.body.place, year: parseInt(req.body.year)}).fetch());
+    if (year_place) {
+      res.status(200).json(year_place);
+    } else {
+      res.status(200).json({id: 0});
+    }
     
 
   } catch(e) {

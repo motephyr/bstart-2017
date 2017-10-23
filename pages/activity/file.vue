@@ -4,8 +4,8 @@
       <div id="hot"></div>
     </div>
     <div id="footerBar">
-      <div class="ftBt" id="downBt"><i class="icon-file-excel-o"></i>下载</div>
-      <div class="ftBt"><i class="icon-file-excel-o"></i>上傳<input type="file" id="changeBt"/></div>
+      <div class="ftBt" id="downBt"><i class="icon-file-excel-o"></i>下载樣板</div>
+      <div class="ftBt"><i class="icon-file-excel-o"></i>修改上傳<input type="file" id="changeBt"/></div>
       <div class="ftBt" id="showDataBt"><i class="icon-checkmark5"></i>儲存</div>
     </div>
   </div>

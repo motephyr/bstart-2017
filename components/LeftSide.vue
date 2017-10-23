@@ -72,10 +72,24 @@ export default {
       })
     }
   },
+  computed: {
+    optionsPlace: {
+      get: function () {
+        var array;
+        if (this.$store.state.authUser && this.$store.state.authUser.area === '中央'){
+          array = ['中央']
+        } else {
+          array = []
+        }
+        var result = array.concat(this.$store.state.yearPlaces.places)
+        return result
+      }
+    }
+  },
   data(){
     return {
       optionsYear: this.$store.state.yearPlaces.years,
-      optionsPlace: this.$store.state.yearPlaces.places,
+//      optionsPlace: this.$store.state.yearPlaces.places,
       valueYear: this.$store.state.year,
       valuePlace: this.$store.state.place
     }

@@ -23,6 +23,7 @@
                 <el-input type="text" v-model="promotion_activities_1.value[ix][iy]" ></el-input>
               </div>
             </td>
+            <td>{{x.description}}</td>
           </tr>
           </tbody>
         </table>
@@ -46,6 +47,7 @@
                 <el-input type="text" v-model="promotion_activities_2.value[ix][iy]" ></el-input>
               </div>
             </td>
+            <td>{{x.description}}</td>
           </tr>
           </tbody>
         </table>
@@ -69,13 +71,14 @@
                 <el-input type="text" v-model="promotion_activities_3.value[ix][iy]" />
               </div>
             </td>
+            <td>{{x.description}}</td>
           </tr>
           </tbody>
         </table>
         <el-button @click="update_data('promotion_activities_3')">Update</el-button>
 
         <nuxt-link to="/">Back to the home page</nuxt-link>
-        <edit :promotion_activities_edit="promotion_activities_edit" />
+        <!--<edit :promotion_activities_edit="promotion_activities_edit" />-->
       </div>
     </div>
     <div id="footerBar">
@@ -88,11 +91,7 @@
 <script>
 import axios from '~/plugins/axios'
 import _ from 'lodash'
-import Edit from './edit.vue'
 export default {
-  components: {
-    Edit
-  },
   data () {
     return {
       promotion_activities_1: {
