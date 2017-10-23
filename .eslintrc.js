@@ -33,7 +33,9 @@ module.exports = {
     'no-sequences': 'off',
     'quotes': 'off',
     'no-unused-vars': 'off',
-    'indent': 'off'
+    'indent': 'off',
+    'no-return-assign': 'off',
+    'no-unneeded-ternary': 'off'
   },
   globals: {}
 }

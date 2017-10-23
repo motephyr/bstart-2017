@@ -53,6 +53,7 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit ({ commit }, { req }) {
     if (req.session && req.session.loggedIn) {
+      // commit('SET_USER', {username: req.session.name})
       try {
         var res = await axios.post('/api/users/email',{email: req.session.email})
         commit('SET_USER', {username: req.session.name, area: res.data.area, id: res.data._id})

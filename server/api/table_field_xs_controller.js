@@ -39,14 +39,11 @@ router.patch('/table_field_xs/:id', async function (req, res, next) {
     var table_field_x = (await TableFieldX.forge().query((qb) => {
       qb.where({id: req.params.id});
     }).fetch());
-    
     await table_field_x.save({description: req.body.description},{patch: true}).toJSON()
-
     res.status(200).send("ok")
   } catch(e) {
     console.log(e)
     res.status(500).json(e);
- 
   }
 
 })

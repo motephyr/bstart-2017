@@ -35,7 +35,7 @@
             </div>
         </div>
         <div id="footerBar">
-            <div class="ftBt"><i class="icon-download3"></i> 下載</div>
+            <div class="ftBt"><i class="icon-download3"></i>下載</div>
         </div>
     </div>
 </template>

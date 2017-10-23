@@ -8,7 +8,7 @@
       </div>
     </div>
     <div id="footerBar">
-      <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>
+      <div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i>返回</div>
       <el-tooltip class="item" effect="dark" content="刪除該帳號" placement="top">
         <div @click="deleteAccount" class="ftBt"><i class="icon-cancel"></i>刪除</div>
       </el-tooltip>
