@@ -1,7 +1,7 @@
 <template>
   <div class="nav-list">
     <ul class="mlist">
-      <div v-if="$store.state.place === '中央'">
+      <div v-if="$store.state.authUser.area === '中央'">
         <li class="listLi"><nuxt-link class="listbutton" to="/users/list" ><i class="icon-account"></i>帳號</nuxt-link></li>
       </div>
       <div v-else>
@@ -26,7 +26,7 @@
         <!--</el-tooltip>-->
 
       </li>
-      <li class="place" v-if="$store.state.place === '中央'">
+      <li class="place" v-if="$store.state.authUser.area === '中央'">
         <!--<el-tooltip class="item" effect="dark" placement="top">-->
           <!--<div slot="content">選擇縣市分類</div>-->
           <el-select v-model="valuePlace" placeholder="縣市" @change="getYearPlaceId()">
