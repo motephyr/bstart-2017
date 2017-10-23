@@ -13,7 +13,7 @@
         <div @click="deleteAccount" class="ftBt"><i class="icon-cancel"></i>刪除</div>
       </el-tooltip>
       <label for="aSwitch">帳號使用</label>
-      <el-switch id="aSwitch" v-model="accountSwitch" on-color="#7ed321" off-color="#ff4949"></el-switch>
+      <el-switch id="aSwitch" v-model="accountSwitch" on-color="#7ed321" off-color="#ff4949" @change="lock_user(params.id)"></el-switch>
       <div class="ftBt" @click="reset_pwdResetToken(params.id)"><i class="icon-rotate_right"></i> 更新驗證碼</div>
       <div class="ftBt" @click="saveData"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
@@ -76,7 +76,7 @@ export default {
   data () {
     return {
       fields: tableColumns,
-      accountSwitch: true
+      accountSwitch: (this.$refs && this.$refs.vueForm) ? !this.$refs.vueForm.newObj.accountLocked : true
     }
   },
   methods: {
@@ -89,7 +89,7 @@ export default {
     },
     lock_user (id) {
       axios.patch('/api/users/lock/' + id).then((res) => {
-        this.$router.replace('/users/list?' + Math.random())
+        // this.$router.replace('/users/list?' + Math.random())
       }).catch((e) => {
         console.log(e)
       })
