@@ -134,24 +134,32 @@ app.use('/api', api)
 //   fs.renameSync('./upload/' + file.filename , './upload/' + file.filename + Mime );
 // });
 
-var xlsxUrl;
-app.get('file/:y/:p', function(req, res, next){
-  console.log("name:",req.params.y);
-  console.log("tel:",req.params.p);
-  console.log(req.url);
-  // var objRE = new RegExp(req.url, "/^\d{5}/$");
-  xlsxUrl = req.url;
+// var xlsxUrl;
+// app.get('/gift_bag/file/:y/:p', function(req, res, next){
+//   console.log("name:",req.params.y);
+//   console.log("tel:",req.params.p);
+//   console.log(req.url);
+//   // var objRE = new RegExp(req.url, "/^\d{5}/$");
+//   xlsxUrl = req.url;
+// });
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, req.url);
+    // console.log(req.url);
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now());
+    // console.log('sd');
+  }
 });
-
-
-var uploadxlsx = multer({ dest: "uploads/"+xlsxUrl });
-app.post('/upload/:y/:p', uploadxlsx.single('xlsxUp'), function(req, res, next){
-  // res.send({ret_code: '0'});
-  // file.path('/upload/asd');
-  console.log("path:",uploadxlsx);
+var upload = multer({ storage: storage });
+// var upload = multer({ dest: 'uploads/' });
+app.post('/gift_bag/upload/:y/:p',upload.single('xlsxUp'), function(req, res, next){
+  console.log("年ppp:",upload);
   console.log("年:",req.params.y);
   console.log("地:",req.params.p);
-  console.log('ddf',req.df );
+  // console.log('ddf',req.df );
   var file = req.file;
   console.log('文件类型：%s', file.mimetype);
   console.log('原始文件名：%s', file.originalname);

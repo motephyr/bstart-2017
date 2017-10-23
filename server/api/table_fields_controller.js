@@ -68,12 +68,12 @@ router.get('/table_fields/all/:id', async function (req, res, next) {
     var mid_value = _(table_field).map((x) => {return _(x.table_field_xs).map((y) => {return y.table_values}).value() }).value()
     
     var mid2_value = _(mid_value[0]).map((x) => {return _(x).map((y) => {return y.value}).value() }).value()
-    
-    var value = _(mid2_value).map((x) => { 
+
+    var value = _(mid2_value).map((x) => {
       return _(x).reduce((sum, x) => {
         var m = x[0] ? parseInt(x[0]) : 0
         var n = x[1] ? parseInt(x[1]) : 0
-        
+
         return [sum[0]+m, sum[1]+ n]
       },[0,0])
     }).value()
