@@ -1,8 +1,9 @@
 import axios from '~/plugins/axios'
+import _ from 'lodash'
 
 export const state = () => ({
   authUser: null,
-  year: 106,
+  year: 0,
   place: '中央',
   yearPlaceId: 1,
   yearPlaces: {years: null, places: null},
@@ -60,9 +61,14 @@ export const actions = {
         commit('SET_PLACE', res.data.area)
 
         var yearPlaces = await axios.get('/api/year_places')
-        commit('SET_YEAR_PLACES', yearPlaces.data)
+        var years = _(yearPlaces.data.years).filter((x) => {return x.is_show}).map((x) => {return x.year}).value()
+        commit('SET_YEAR_PLACES', {
+          places: yearPlaces.data.places,
+          years: years
+        })
+        commit('SET_YEAR', years[years.length -1])
 
-        var yearPlaceId = await axios.post('/api/year_places/getId', {place: res.data.area, year: state().year})
+        var yearPlaceId = await axios.post('/api/year_places/getId', {place: res.data.area, year: years[years.length -1]})
         commit('SET_YEAR_PLACE_ID', yearPlaceId.data.id)
       } catch (error) {
         if (error.response.status === 401) {

@@ -7,15 +7,12 @@
           <!--<nuxt-link to="/">Back to the home page</nuxt-link>-->
         <ul id="allYear" class="mgCenter">
             <li class="single row" :value="p.id" v-for="p in years">
-                <div class="col-6 col-sm-5 col-md-4 col-lg-4 year">{{p}}</div>
-                <div class="col-6 col-sm-5 col-md-4 col-lg-4 dateArrival"><el-date-picker v-model="valuePicker" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker></div>
-                <div class="col-6 col-sm-5 col-md-4 col-lg-4 showSw"><el-switch v-model="valueSw" on-color="#13ce66" off-color="#ff4949"></el-switch></div>
-                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 year">{{p}}</div>-->
-                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 dateArrival"><el-date-picker v-model="valuePicker" type="date" placeholder="已結束" :picker-options="pickerOptions0"></el-date-picker></div>-->
-                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 showSw"><el-switch v-model="valueSw" on-color="#13ce66" off-color="#ff4949"></el-switch></div>-->
-                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor">215,345,678</div>-->
-                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 CapitalGate">345,345,678</div>-->
-                <!--<div class="col-6 col-sm-5 col-md-4 col-lg-2 Subtotal">3,945,345,678</div>-->
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 year">{{p.year}}</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 dateArrival"><el-date-picker v-model="p.editable_at" type="date" placeholder="已結束" :picker-options="pickerOptions0" @change="setEditableDate(p, p.editable_at)"></el-date-picker></div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 showSw"><el-switch v-model="p.is_show" on-color="#13ce66" off-color="#ff4949" @change="isShow(p)"></el-switch></div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 RegularGoor">215,345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 CapitalGate">345,345,678</div>
+                <div class="col-6 col-sm-5 col-md-4 col-lg-2 Subtotal">3,945,345,678</div>
                 <el-tooltip class="item" effect="dark" content="刪除該年度資料" placement="left">
                     <div @click="openDlThisYear(p)" class="dlThisYear icon-cancel"></div>
                 </el-tooltip>
@@ -93,6 +90,16 @@ export default {
           message: '已取消刪除,資料尚在'
         });
       });
+    },
+    isShow(year) {
+      axios.patch('/api/year_places/' + year.year,{is_show: year.is_show}).then((res) => {
+        // alert('a')
+      })
+    },
+    setEditableDate(year, date) {
+      axios.patch('/api/year_places/' + year.year,{editable_at: date}).then((res) => {
+        // alert('b')
+      })
     }
   },
   mounted: function () {
