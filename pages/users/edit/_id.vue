@@ -2,7 +2,7 @@
   <div>
     <div class="nuxtMainPanel">
       <div class="pd20">
-        <vue-form :fields="fields" mode="edit" model="user" :api-url="apiUrl"></vue-form>
+        <vue-form :fields="fields" mode="edit" model="user" :api-url="apiUrl" ref="vueForm"></vue-form>
         <!--<button @click="lock_user(params.id)">啟用/停用</button>-->
         <!--<button @click="delete_user(params.id)">Delete</button>-->
       </div>
@@ -13,9 +13,9 @@
         <div @click="deleteAccount" class="ftBt"><i class="icon-cancel"></i>刪除</div>
       </el-tooltip>
       <label for="aSwitch">帳號使用</label>
-      <el-switch id="aSwitch" v-model="accountSwitch" on-color="#7ed321" off-color="#ff4949"></el-switch>
-      <div class="ftBt" @click="reset_pwdResetToken(params.id)"><i class="icon-rotate_right"></i>更新驗證碼</div>
-      <div class="ftBt"><i class="icon-checkmark5"></i>儲存</div>
+      <el-switch id="aSwitch" v-model="accountSwitch" on-color="#7ed321" off-color="#ff4949" @change="lock_user(params.id)"></el-switch>
+      <div class="ftBt" @click="reset_pwdResetToken(params.id)"><i class="icon-rotate_right"></i> 更新驗證碼</div>
+      <div class="ftBt" @click="saveData"><i class="icon-checkmark5"></i> 儲存</div>
     </div>
   </div>
 </template>
@@ -76,7 +76,7 @@ export default {
   data () {
     return {
       fields: tableColumns,
-      accountSwitch: true
+      accountSwitch: (this.$refs && this.$refs.vueForm) ? !this.$refs.vueForm.newObj.accountLocked : true
     }
   },
   methods: {
@@ -89,7 +89,7 @@ export default {
     },
     lock_user (id) {
       axios.patch('/api/users/lock/' + id).then((res) => {
-        this.$router.replace('/users/list?' + Math.random())
+        // this.$router.replace('/users/list?' + Math.random())
       }).catch((e) => {
         console.log(e)
       })
@@ -116,6 +116,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        this.$refs.vueForm.RemoveUser(this.params.id)
+      }).then(() => {
         this.$message({
           type: 'success',
           message: '刪除成功!'
@@ -126,6 +128,9 @@ export default {
           message: '已取消刪除,該帳號尚在'
         });
       });
+    },
+    saveData() {
+      this.$refs.vueForm.UpdateUser(this.params.id)
     }
   }
 }
