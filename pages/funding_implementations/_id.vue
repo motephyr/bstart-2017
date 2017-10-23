@@ -15,7 +15,7 @@
           <div class="ftBt" @click="addNewTab"><i class="icon-loupe"></i> 新增項目</div></div>
       </div>
         <el-tabs type="border-card" @tab-click="handleClick">
-          <el-tab-pane label="總表">
+          <el-tab-pane label="總表" v-if="$store.state.authUser.area === '中央'">
             <el-table :data="tableData3" border style="width: 100%" height="400">
               <el-table-column fixed prop="local" label="縣市" width="100"></el-table-column>
               <el-table-column prop="RegularGoor" label="經常門" width="120"></el-table-column>
@@ -80,7 +80,7 @@ export default {
     return {
       newTabName: '',
       structs: [],
-      chooseTab: '',
+      chooseTab: '多元閱讀',
       vuexData: this.$store.state,
       tableData3: [
         {local: '基隆市',RegularGoor: '221333',CapitalGate: '3243242',Subtotal: '324324234'},
@@ -160,6 +160,11 @@ export default {
 //        let readingActivitiesEdit = await axios.get('/api/table_fields/' + 'funding_implementations' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId +'&action=edit')
         let res = await axios.post('/api/table_fields/getSubField/' + 'funding_implementations', {year: this.$store.state.year, yearPlaceId: this.$store.state.yearPlaceId})
         this.structs = res.data
+
+        if (this.$store.state.place === '中央'){
+          let resAll = await axios.post('/api/table_fields/getSubField/all/' + 'funding_implementations', {year: this.$store.state.year, yearPlaceId: this.$store.state.yearPlaceId})
+          this.tableData3 = resAll.data
+        }
 //        console.log(this.structs)
       } catch (e) {
 //        console.log(e)
