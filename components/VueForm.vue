@@ -223,7 +223,9 @@ export default {
       var self = this
       axios.patch(this.apiUrl + id, user, this.httpOptions).then((data) => {
         self.newObj = data.body
-        self.setMode('show')
+        this.$router.replace('/')
+
+        // self.setMode('show')
       })
     },
 
