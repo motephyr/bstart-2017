@@ -160,7 +160,9 @@ export default {
 //        let readingActivitiesEdit = await axios.get('/api/table_fields/' + 'funding_implementations' + '?year='+ this.$store.state.year + '&yearPlaceId=' + this.$store.state.yearPlaceId +'&action=edit')
         let res = await axios.post('/api/table_fields/getSubField/' + 'funding_implementations', {year: this.$store.state.year, yearPlaceId: this.$store.state.yearPlaceId})
         this.structs = res.data
-
+        if (res.data.length > 0) {
+          this.chooseTab = res.data[0].sub_field
+        }
         if (this.$store.state.place === '中央'){
           let resAll = await axios.post('/api/table_fields/getSubField/all/' + 'funding_implementations', {year: this.$store.state.year, yearPlaceId: this.$store.state.yearPlaceId})
           this.tableData3 = resAll.data
