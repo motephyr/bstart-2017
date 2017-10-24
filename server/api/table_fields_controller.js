@@ -170,22 +170,9 @@ router.post('/table_fields/getSubField/:id', async function (req, res, next) {
       var xs = _(table_field[i].table_field_xs).orderBy('location').value()
 
       // var xs_value = _.chain(xs).map((x) => {return x.value}).value()
-      // var value = _(xs).map((x) => {return x.table_values[0] && x.table_values[0].value != null ? x.table_values[0].value : [null,null] }).value()
+      var value = _(xs).map((x) => {return x.table_values[0] && x.table_values[0].value != null ? x.table_values[0].value : [null,null] }).value()
       obj.push({sub_field: subField, xaxio: xs, yaxio: ys, value: value})
     }
-
-    var mid_value = _(table_field).map((x) => {return _(x.table_field_xs).map((y) => {return y.table_values}).value() }).value()
-
-    var mid2_value = _(mid_value[0]).map((x) => {return _(x).map((y) => {return y.value}).value() }).value()
-
-    var value = _(mid2_value).map((x) => {
-      return _(x).reduce((sum, x) => {
-        var m = x[0] ? parseInt(x[0]) : 0
-        var n = x[1] ? parseInt(x[1]) : 0
-
-        return [sum[0]+m, sum[1]+ n]
-      },[0,0])
-    }).value()
 
     res.status(200).json(obj);
     
