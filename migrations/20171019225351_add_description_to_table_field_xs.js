@@ -1,8 +1,7 @@
-
 exports.up = function(knex, Promise) {
-  return Promise.all([    
+  return Promise.all([
     knex.schema.table('table_field_xs', function(table){
-      table.text('description');   
+      table.text('description');
     })
   ])
 };

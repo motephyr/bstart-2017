@@ -130,7 +130,7 @@
     </div>
     <div id="footerBar">
       <!--<div class="ftBt" onClick="javascript:history.back(-1);"><i class="icon-chevron-thin-left"></i> 返回</div>-->
-      <div class="ftBt" @click="update_data()">儲存</div>
+      <div class="ftBt" @click="update_data()"><i class="icon-checkmark5"></i>儲存</div>
     </div>
   </div>
 </template>
