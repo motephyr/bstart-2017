@@ -90,16 +90,17 @@ export default {
   },
   methods: {
     update_data (name) {
+      console.log(this[name].xaxio[0])
       var changeValue = _(this[name].xaxio).map((x, i) => {
         x.table_values = this[name].value[i]
         return x
       }).value()
-      console.log(changeValue)
-      axios.post('/api/table_values/' + name, {change_value: changeValue, yearPlaceId: this.$store.state.yearPlaceId}).then((res) => {
-        this.$router.replace('/reading_activities?' + Math.random())
-      }).catch((e) => {
-        console.log(e)
-      })
+//      console.log(changeValue)
+//      axios.post('/api/table_values/' + name, {change_value: changeValue, yearPlaceId: this.$store.state.yearPlaceId}).then((res) => {
+//        this.$router.replace('/reading_activities?' + Math.random())
+//      }).catch((e) => {
+//        console.log(e)
+//      })
     },
     async getData () {
       try {
@@ -114,6 +115,7 @@ export default {
         } else {
           readingActivities1 = await axios.get('/api/table_fields/all/' + 'reading_activities_1' + '?year='+ this.$store.state.year)
           readingActivities2 = await axios.get('/api/table_fields/all/' + 'reading_activities_2' + '?year='+ this.$store.state.year)
+          console.log(readingActivities1.data.xaxio[0])
         }
         this.reading_activities_1 = readingActivities1.data
         this.reading_activities_2 = readingActivities2.data

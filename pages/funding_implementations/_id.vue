@@ -41,7 +41,7 @@
                 <tr v-for="(x, ix) in struct.xaxio" :key="x.id">
                   <th>{{x.value}}</th>
                   <td v-for="(y, iy) in struct.yaxio" :key="y.id">
-                    <div v-if="struct.value.length > ix && struct.value[ix]">
+                    <div v-if="struct.value && struct.value.length > ix && struct.value[ix]">
                       <!--<input type="text" v-model="struct.value[ix][iy]" />-->
                       <!--<el-input :disabled="true" v-model="struct.value[ix][iy]" placeholder=""></el-input>-->
                       <input type="text" v-model="struct.value[ix][iy]" @keyup="inputChange"/>
