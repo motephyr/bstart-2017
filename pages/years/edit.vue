@@ -76,14 +76,14 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        axios.delete('/api/year_places',{params: {year: year}}).then((res) => {
-          this.$message({
-            type: 'success',
-            message: '刪除成功!'
-          });
-        }).catch((e) => {
-          console.log(e)
-        })
+        axios.delete('/api/year_places',{params: {year: year.year}})
+      }).then((res) => {
+        this.$message({
+          type: 'success',
+          message: '刪除成功!'
+        });
+      }).then(() => {
+        this.$router.replace('/years/edit' + '?' + Math.random())
       }).catch(() => {
         this.$message({
           type: 'info',
